@@ -1,0 +1,739 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<title>关西四晚：大阪 · 神户 · 奈良 · 京都</title>
+<meta name="description" content="2026年9月25日至29日，大阪梅田为基地的神户优先关西旅行互动地图。">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+<style>
+/* ═══════════════════════════════════════════
+   Design System — edit :root to change theme
+   ═══════════════════════════════════════════ */
+:root {
+  --bg-primary:    #ffffff;
+  --bg-secondary:  #f5f5f7;
+  --bg-tertiary:   #fbfbfd;
+  --bg-grouped:    #f2f2f7;
+  --bg-elevated:   #ffffff;
+  --text-primary:   #1d1d1f;
+  --text-secondary: #86868b;
+  --text-tertiary:  #aeaeb2;
+  --accent:        #176b87;
+  --accent-hover:  #0f5c76;
+  --tint-red:    #ff3b30;
+  --tint-orange: #ff9500;
+  --tint-green:  #34c759;
+  --tint-blue:   #007aff;
+  --tint-purple: #af52de;
+  --tint-pink:   #ff2d55;
+  --separator:  rgba(60, 60, 67, .12);
+  --shadow-sm:  0 1px 3px rgba(0,0,0,.06), 0 1px 2px rgba(0,0,0,.04);
+  --shadow-md:  0 4px 14px rgba(0,0,0,.08);
+  --shadow-lg:  0 8px 30px rgba(0,0,0,.12);
+  --radius-sm:  8px;
+  --radius-md:  12px;
+  --radius-lg:  16px;
+  --radius-xl:  20px;
+  --safe-top:    env(safe-area-inset-top, 0px);
+  --safe-bottom: env(safe-area-inset-bottom, 0px);
+}
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body {
+  font-family: -apple-system, BlinkMacSystemFont, "SF Pro Text", "SF Pro Display",
+               "Helvetica Neue", "Arial", sans-serif;
+  background: var(--bg-secondary);
+  color: var(--text-primary);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  line-height: 1.47059;
+  letter-spacing: -0.022em;
+}
+a { color: var(--accent); text-decoration: none; }
+a:hover { text-decoration: underline; }
+
+/* ── Map ── */
+#map { width: 100%; height: 40vh; min-height: 280px; position: sticky; top: 0; z-index: 100; }
+.locate-btn {
+  width: 36px; height: 36px; border-radius: 8px;
+  background: rgba(255,255,255,.92); backdrop-filter: blur(8px);
+  border: none; box-shadow: 0 1px 4px rgba(0,0,0,.18);
+  display: flex; align-items: center; justify-content: center;
+  font-size: 18px; cursor: pointer; -webkit-tap-highlight-color: transparent;
+}
+.locate-btn.active { color: #007aff; }
+@keyframes loc-pulse {
+  0%   { transform: scale(1); opacity: .55; }
+  100% { transform: scale(2.4); opacity: 0; }
+}
+.loc-pulse {
+  width: 14px; height: 14px; border-radius: 50%;
+  background: rgba(0,122,255,.25);
+  animation: loc-pulse 1.6s ease-out infinite;
+}
+
+/* ── Tabs ── */
+.tabs {
+  display: flex; gap: 6px; padding: 12px 16px; overflow-x: auto; -webkit-overflow-scrolling: touch;
+  background: rgba(255,255,255,.85); -webkit-backdrop-filter: saturate(180%) blur(20px);
+  backdrop-filter: saturate(180%) blur(20px); position: sticky; top: 40vh; z-index: 99;
+  border-bottom: .5px solid var(--separator); scrollbar-width: none;
+}
+.tabs::-webkit-scrollbar { display: none; }
+.tab {
+  flex-shrink: 0; padding: 7px 16px; border-radius: 980px; border: none;
+  background: var(--bg-grouped); color: var(--text-secondary);
+  font-size: 14px; font-weight: 500; cursor: pointer; transition: all .25s ease;
+  white-space: nowrap; letter-spacing: -0.01em;
+}
+.tab:active { transform: scale(.96); }
+.tab.active { background: var(--accent); color: #fff; }
+
+/* ── Main content ── */
+.content { max-width: 680px; margin: 0 auto; padding: 16px 16px calc(24px + var(--safe-bottom)); }
+
+/* ── Overview ── */
+.hero { text-align: center; padding: 28px 20px 20px; }
+.hero h1 { font-size: 28px; font-weight: 700; letter-spacing: -0.025em; line-height: 1.15; }
+.hero .subtitle { font-size: 17px; color: var(--text-secondary); margin-top: 6px; font-weight: 400; }
+
+.info-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-bottom: 20px; }
+.info-card { background: var(--bg-elevated); border-radius: var(--radius-lg); padding: 16px; box-shadow: var(--shadow-sm); }
+.info-card .label { font-size: 12px; font-weight: 600; color: var(--text-secondary); text-transform: uppercase; letter-spacing: .02em; margin-bottom: 6px; }
+.info-card .value { font-size: 15px; font-weight: 600; line-height: 1.4; }
+
+/* ── Section headers ── */
+.section-head { font-size: 13px; font-weight: 600; color: var(--text-secondary); text-transform: uppercase; letter-spacing: .03em; padding: 20px 0 8px; }
+
+/* ── Day header ── */
+.day-head { padding: 20px 0 12px; }
+.day-head h2 { font-size: 22px; font-weight: 700; letter-spacing: -0.02em; }
+.day-head p { font-size: 15px; color: var(--text-secondary); margin-top: 2px; }
+
+/* ── Route bar ── */
+.route-bar { background: var(--bg-elevated); border-radius: var(--radius-md); padding: 12px 14px; margin-bottom: 14px; box-shadow: var(--shadow-sm); font-size: 13px; color: var(--text-secondary); line-height: 1.7; white-space: pre-line; }
+.route-bar strong { color: var(--text-primary); }
+
+/* ── Timeline ── */
+.timeline { position: relative; padding-left: 24px; }
+.timeline::before { content: ''; position: absolute; left: 7px; top: 20px; bottom: 20px; width: 1.5px; background: var(--separator); }
+.tl-item { position: relative; margin-bottom: 10px; }
+.tl-dot { position: absolute; left: -20px; top: 18px; width: 10px; height: 10px; border-radius: 50%; z-index: 1; box-shadow: 0 0 0 3px var(--bg-secondary); }
+.tl-dot.food    { background: var(--tint-red); }
+.tl-dot.spot    { background: var(--tint-blue); }
+.tl-dot.hotel   { background: var(--tint-orange); }
+.tl-dot.drink   { background: var(--tint-purple); }
+.tl-dot.transport { background: var(--text-tertiary); }
+
+/* ── Card ── */
+.card { background: var(--bg-elevated); border-radius: var(--radius-md); padding: 14px 16px; box-shadow: var(--shadow-sm); transition: box-shadow .25s ease; cursor: pointer; }
+.card:active { box-shadow: var(--shadow-md); }
+.card .time { font-size: 12px; font-weight: 600; color: var(--text-tertiary); letter-spacing: .01em; }
+.card .name { font-size: 17px; font-weight: 600; margin: 2px 0 4px; letter-spacing: -0.01em; display: flex; align-items: center; gap: 6px; }
+.card .desc { font-size: 14px; color: var(--text-secondary); line-height: 1.45; }
+
+/* Badge */
+.badge { display: inline-flex; align-items: center; font-size: 11px; font-weight: 700; padding: 1px 7px; border-radius: 4px; }
+.badge.food   { background: rgba(255,59,48,.1);  color: var(--tint-red); }
+.badge.spot   { background: rgba(0,122,255,.1);  color: var(--tint-blue); }
+.badge.drink  { background: rgba(175,82,222,.1); color: var(--tint-purple); }
+
+/* Budget */
+.budget { display: inline-block; margin-top: 6px; padding: 3px 10px; background: var(--bg-grouped); border-radius: var(--radius-sm); font-size: 12px; color: var(--text-secondary); font-weight: 500; }
+
+/* Payment */
+.pays { display: flex; gap: 4px; flex-wrap: wrap; margin-top: 6px; }
+.pay { font-size: 11px; padding: 2px 7px; border-radius: 4px; font-weight: 600; }
+.pay.ok  { background: rgba(52,199,89,.1);  color: var(--tint-green); }
+.pay.no  { background: rgba(255,59,48,.08); color: var(--tint-red); }
+.pay.idk { background: rgba(255,149,0,.1);  color: var(--tint-orange); }
+
+/* Links row */
+.links { display: flex; gap: 8px; margin-top: 10px; flex-wrap: wrap; }
+.btn {
+  display: inline-flex; align-items: center; gap: 4px;
+  padding: 8px 14px; border-radius: var(--radius-sm);
+  font-size: 13px; font-weight: 600; border: none; cursor: pointer;
+  text-decoration: none !important; transition: filter .2s;
+}
+.btn:active { filter: brightness(.9); }
+.btn.nav    { background: var(--accent); color: #fff; }
+.btn.xhs    { background: #ff2442; color: #fff; }
+.btn.dp     { background: #ffa700; color: #fff; }
+.btn.rsv    { background: var(--tint-green); color: #fff; }
+
+/* Action Sheet */
+.as-overlay {
+  position: fixed; inset: 0; z-index: 9999;
+  background: rgba(0,0,0,.35); backdrop-filter: blur(2px);
+  display: flex; align-items: flex-end; justify-content: center;
+  opacity: 0; pointer-events: none; transition: opacity .25s;
+}
+.as-overlay.show { opacity: 1; pointer-events: auto; }
+.as-sheet {
+  width: 100%; max-width: 420px;
+  padding: 0 8px 34px;
+  transform: translateY(100%); transition: transform .3s cubic-bezier(.22,1,.36,1);
+}
+.as-overlay.show .as-sheet { transform: translateY(0); }
+.as-group {
+  background: rgba(255,255,255,.88); backdrop-filter: blur(20px);
+  border-radius: 14px; overflow: hidden; margin-bottom: 8px;
+}
+.as-group .as-item {
+  display: flex; align-items: center; justify-content: center; gap: 8px;
+  padding: 16px; font-size: 18px; color: #007aff; font-weight: 500;
+  border: none; background: none; width: 100%; cursor: pointer;
+  -webkit-tap-highlight-color: transparent;
+}
+.as-group .as-item + .as-item { border-top: .5px solid rgba(0,0,0,.12); }
+.as-group .as-item:active { background: rgba(0,0,0,.06); }
+.as-cancel { font-weight: 600; }
+
+/* Details — default open */
+.details {
+  margin-top: 10px; padding-top: 10px;
+  border-top: .5px solid var(--separator);
+  font-size: 13px; color: var(--text-secondary); line-height: 1.6;
+}
+.details.closed { display: none; }
+
+/* ── Overview day list ── */
+.day-list .card { margin-bottom: 8px; }
+.day-list .card .dot { display: inline-block; width: 8px; height: 8px; border-radius: 50%; margin-right: 6px; }
+
+/* ── Payment summary ── */
+.pay-summary { background: var(--bg-elevated); border-radius: var(--radius-md); padding: 14px 16px; box-shadow: var(--shadow-sm); font-size: 13px; line-height: 1.7; margin-bottom: 10px; }
+.pay-summary h4 { font-size: 14px; font-weight: 700; margin-bottom: 4px; }
+.pay-summary .warn { color: var(--tint-red); }
+.pay-summary .ok-text { color: var(--tint-green); }
+
+/* ── Legend ── */
+.legend { display: flex; gap: 14px; flex-wrap: wrap; padding: 8px 0; font-size: 12px; color: var(--text-secondary); }
+.legend-item { display: flex; align-items: center; gap: 5px; }
+.legend-dot { width: 8px; height: 8px; border-radius: 50%; }
+
+/* ── Leaflet overrides ── */
+.leaflet-popup-content-wrapper { border-radius: var(--radius-md) !important; box-shadow: var(--shadow-lg) !important; font-family: -apple-system, BlinkMacSystemFont, "SF Pro Text", sans-serif !important; }
+.leaflet-popup-content { font-size: 14px !important; line-height: 1.5 !important; margin: 12px 14px !important; }
+.leaflet-popup-content a { color: var(--accent) !important; }
+.leaflet-popup-tip { background: #fff !important; }
+.leaflet-control-zoom a { width: 34px !important; height: 34px !important; line-height: 34px !important; font-size: 16px !important; border-radius: 10px !important; background: rgba(255,255,255,.85) !important; -webkit-backdrop-filter: blur(10px) !important; backdrop-filter: blur(10px) !important; border: .5px solid var(--separator) !important; color: var(--text-primary) !important; }
+.leaflet-control-zoom { border-radius: 12px !important; overflow: hidden; box-shadow: var(--shadow-md) !important; border: none !important; }
+.leaflet-control-attribution { font-size: 9px !important; opacity: .5; }
+</style>
+</head>
+<body>
+
+<div id="map"></div>
+<div class="tabs" id="tabs"></div>
+<div class="content" id="content"></div>
+
+<script>
+// ╔══════════════════════════════════════════════════════════════╗
+// ║  REPLACE THIS SECTION — Hotel and Days data                 ║
+// ╚══════════════════════════════════════════════════════════════╝
+
+const HOTEL = { name: '梅田／大阪站酒店（待定）', lat: 34.702485, lng: 135.495951 };
+
+const DAYS = [
+  { id: 0, label: '总览', color: '#176b87', locations: [] },
+  {
+    id: 1, label: '9/25 抵达', date: '周五 · 16:00 抵达关西机场 T1',
+    title: '落地梅田，第一晚放轻', color: '#e28b42',
+    locations: [
+      {
+        name: '关西国际机场 T1', lat: 34.434160, lng: 135.244000,
+        type: 'transport', time: '16:00', desc: '入境、取行李；不在首晚安排预约项目。',
+        detail: '建议预留 60–90 分钟完成入境和取行李。关西机场站与 T1 二楼直连。<br><a href="https://www.kansai-airport.or.jp/en/access/train" target="_blank">关西机场官方交通</a>',
+        gmap: 'Kansai+International+Airport+Terminal+1'
+      },
+      {
+        name: 'JR 关空快速／机场巴士', lat: 34.435000, lng: 135.243700,
+        type: 'transport', time: '17:15', desc: '首选 JR 关空快速直达大阪站，约 65 分钟；行李多时可改机场巴士到梅田。',
+        budget: '约 ¥1,210/人起', gmap: 'Kansai+Airport+Station'
+      },
+      {
+        name: '梅田／大阪站酒店（待定）', lat: 34.702485, lng: 135.495951,
+        type: 'hotel', time: '18:30', desc: '办理入住。订房建议控制在大阪站、阪急大阪梅田站步行 10 分钟内。',
+        detail: '梅田是本行程最省换乘的基地：JR 去神户／京都方便，返程也可从大阪站直达关西机场。',
+        gmap: 'Osaka+Station'
+      },
+      {
+        name: '梅田晚餐与 Grand Green Osaka', lat: 34.705530, lng: 135.493100,
+        type: 'food', time: '19:30', desc: '酒店附近吃饭，饭后只做轻松散步；不为名店排长队。',
+        budget: '¥2,000–5,000/人', xhsKeyword: '大阪 梅田 晚餐',
+        dianpingKeyword: '大阪 梅田 晚餐', gmap: 'Grand+Green+Osaka'
+      }
+    ]
+  },
+  {
+    id: 2, label: '9/26 神户', date: '周六 · 建筑、海风与港湾日落',
+    title: '神户主日：青苹果到港塔夜景', color: '#1f7a8c',
+    locations: [
+      {
+        name: '大阪站 → 灘／岩屋', lat: 34.702485, lng: 135.495951,
+        type: 'transport', time: '08:45', desc: '从梅田出发，先到兵库县立美术馆；当天路线一路向西，不走回头路。',
+        detail: '可搭 JR 至灘站，或阪神至岩屋站，再步行前往美术馆。', gmap: 'Osaka+Station'
+      },
+      {
+        name: '兵库县立美术馆与青苹果', lat: 34.699430, lng: 135.217650,
+        type: 'spot', time: '10:00', desc: '安藤忠雄建筑、海侧阶梯与巨大青苹果；本日第一锚点。',
+        budget: '常设展 ¥550/人',
+        detail: '官方开放 10:00–18:00，17:30 停止入场；周一休馆。先看建筑与海侧公共空间，再决定是否进展厅。<br><a href="https://www.artm.pref.hyogo.jp/eng/access/" target="_blank">美术馆官方信息</a>',
+        xhs: 'https://www.xiaohongshu.com/explore/69304740000000001e038083?xsec_source=app_share&type=normal&xsec_token=CBfc6PdAyblVYRWTEw2TFFZMwmTZs9FMFe8Mk36GU31v8=',
+        gmap: 'Hyogo+Prefectural+Museum+of+Art'
+      },
+      {
+        name: '三宫午餐', lat: 34.693960, lng: 135.194890,
+        type: 'food', time: '12:30', desc: '神户牛是可选升级，不强制；优先选能预约、离车站近的店。',
+        budget: '¥2,000–10,000/人', xhsKeyword: '神户 三宫 午餐 神户牛',
+        dianpingKeyword: '神户 三宫 神户牛', gmap: 'Kobe+Sannomiya+Station'
+      },
+      {
+        name: '南京町', lat: 34.688180, lng: 135.187180,
+        type: 'spot', time: '14:15', desc: '控制在 45–60 分钟，把它当作顺路小吃段，不在周末排长队。',
+        xhsKeyword: '神户 南京町', gmap: 'Nankinmachi+Kobe'
+      },
+      {
+        name: '美利坚公园与 BE KOBE', lat: 34.682620, lng: 135.188270,
+        type: 'spot', time: '16:30', desc: '傍晚抵达，同时看白天、日落和亮灯后的港湾。',
+        detail: '9 月下旬日落约在 17:50 前后；BE KOBE 常需排队，若队伍太长就直接沿海散步。',
+        xhs: 'https://www.xiaohongshu.com/explore/68b51f3e000000001d01cc31?xsec_source=app_share&type=normal&xsec_token=CB04Hb8R99yvRfTDf4OLoEifV22608b7OTXCd4m0uIKRo=',
+        gmap: 'Meriken+Park+Kobe'
+      },
+      {
+        name: '神户港塔', lat: 34.682630, lng: 135.186690,
+        type: 'spot', time: '18:05', desc: '日落后登塔看港湾夜景；天气差可只看外观，改去 MOSAIC。',
+        budget: '屋顶＋展望层 ¥1,200/人',
+        detail: '官方通常开放至 23:00，最晚 22:30 入场；指定日期票可提前购买。<br><a href="https://www.kobe-port-tower.com/en/" target="_blank">神户港塔官方信息</a>',
+        reserve: 'https://www.kobe-port-tower.com/en/', gmap: 'Kobe+Port+Tower'
+      },
+      {
+        name: 'Harborland MOSAIC 晚餐', lat: 34.679620, lng: 135.181750,
+        type: 'food', time: '19:15', desc: '港景晚餐与商场休息，之后从神户站返回梅田。',
+        budget: '¥2,000–6,000/人', xhsKeyword: '神户 MOSAIC 晚餐 港景',
+        dianpingKeyword: '神户 MOSAIC 晚餐', gmap: 'Kobe+Harborland+umie+MOSAIC'
+      }
+    ]
+  },
+  {
+    id: 3, label: '9/27 奈良', date: '周日 · 只走奈良公园一条线',
+    title: '奈良轻量日：大佛、鹿与老街', color: '#8a7d3b',
+    locations: [
+      {
+        name: '大阪梅田 → 近铁奈良', lat: 34.684350, lng: 135.827620,
+        type: 'transport', time: '08:15', desc: '梅田经难波换乘近铁；约 1 小时，尽量 09:30 前到。',
+        gmap: 'Kintetsu+Nara+Station'
+      },
+      {
+        name: '奈良公园', lat: 34.685080, lng: 135.843090,
+        type: 'spot', time: '09:30', desc: '先散步与看鹿；鹿是野生动物，食物拿稳，不逗弄。',
+        detail: '奈良公园约 660 公顷，不追求走遍；当天只保东大寺—二月堂—春日大社—奈良町主线。<br><a href="https://www.visitnara.jp/destinations/area/nara-park/" target="_blank">奈良官方区域指南</a>',
+        gmap: 'Nara+Park'
+      },
+      {
+        name: '东大寺大佛殿', lat: 34.689000, lng: 135.839810,
+        type: 'spot', time: '10:30', desc: '奈良日唯一必进景点；周日上午早点到，避开午后团客。',
+        budget: '¥800/人',
+        detail: '4–10 月官方开放 07:30–17:30，全年开放。<br><a href="https://www.visitnara.jp/venues/A00485/" target="_blank">东大寺官方旅游信息</a>',
+        gmap: 'Todaiji+Temple'
+      },
+      {
+        name: '二月堂', lat: 34.689790, lng: 135.841920,
+        type: 'spot', time: '12:00', desc: '从高处看奈良市景，比在鹿群里久留更安静。',
+        gmap: 'Nigatsudo+Nara'
+      },
+      {
+        name: '奈良公园南侧午餐', lat: 34.681080, lng: 135.837840,
+        type: 'food', time: '13:00', desc: '柿叶寿司、茶粥或乌冬三选一；不为网红店绕路。',
+        budget: '¥1,200–3,000/人', xhsKeyword: '奈良公园 午餐 柿叶寿司',
+        dianpingKeyword: '奈良公园 午餐', gmap: 'Nara+Park+restaurants'
+      },
+      {
+        name: '春日大社', lat: 34.681380, lng: 135.848430,
+        type: 'spot', time: '14:15', desc: '沿林间参道慢走；如果体力下降，可在此直接缩短路线。',
+        gmap: 'Kasuga+Taisha'
+      },
+      {
+        name: '奈良町', lat: 34.675410, lng: 135.831740,
+        type: 'spot', time: '16:15', desc: '老街、杂货与咖啡收尾，18:00 前后返程。',
+        xhsKeyword: '奈良町 citywalk 咖啡', gmap: 'Naramachi+Nara'
+      }
+    ]
+  },
+  {
+    id: 4, label: '9/28 京都', date: '周一 · 东山庭园与鸭川绿色线',
+    title: '京都取舍版：南禅寺、无邻菴、鸭川', color: '#4b7f52',
+    locations: [
+      {
+        name: '大阪站 → 京都／蹴上', lat: 35.007650, lng: 135.759330,
+        type: 'transport', time: '07:45', desc: 'JR 到京都后转地铁蹴上；避开伏见稻荷、清水寺等拥挤大环线。',
+        gmap: 'Keage+Station+Kyoto'
+      },
+      {
+        name: '南禅寺', lat: 35.011330, lng: 135.793110,
+        type: 'spot', time: '09:00', desc: '山门、水路阁与庭园；笔记里的绿色京都元素在这里最集中。',
+        budget: '境内免费；庭园另付',
+        detail: '3–11 月官方参观时段 08:40–17:00，结束前 20 分钟停止入场。<br><a href="https://nanzenji.or.jp/about_rinzaishu/visit" target="_blank">南禅寺官方参观信息</a>',
+        xhs: 'https://www.xiaohongshu.com/explore/685be7db000000000d01b6cc?xsec_source=app_share&type=normal&xsec_token=CB04wzPzsdZktGdp_apE9tNpY4CDGPBQlhAUTfJFM_cAI=',
+        gmap: 'Nanzenji+Temple+Kyoto'
+      },
+      {
+        name: '无邻菴', lat: 35.011620, lng: 135.790710,
+        type: 'spot', time: '10:45', desc: '与南禅寺相邻的近代日式庭园；本日唯一需要预约的锚点。',
+        budget: '以预约页为准',
+        detail: '官方按小时限流，建议预约；9/28 名额预计从 8/29 起开放。预约迟到可能无法入场，预付后取消通常不退款。',
+        reserve: 'https://murin-an.jp/info/', gmap: 'Murin-an+Kyoto'
+      },
+      {
+        name: '南禅寺周边午餐', lat: 35.009800, lng: 135.789770,
+        type: 'food', time: '12:15', desc: '汤豆腐或荞麦面，选择步行范围内有空位的店。',
+        budget: '¥1,500–4,000/人', xhsKeyword: '京都 南禅寺 汤豆腐 午餐',
+        dianpingKeyword: '京都 南禅寺 午餐', gmap: 'Nanzenji+restaurants'
+      },
+      {
+        name: '祇园白川', lat: 35.005100, lng: 135.775130,
+        type: 'spot', time: '14:30', desc: '从东山慢慢走到水边，不安排和服拍摄与多个寺院套票。',
+        gmap: 'Gion+Shirakawa+Kyoto'
+      },
+      {
+        name: '鸭川三角洲', lat: 35.030020, lng: 135.771530,
+        type: 'spot', time: '16:30', desc: '以河岸、草地和散步收尾；替代交通更远的上贺茂段。',
+        detail: '这是对你所发“上贺茂鸭川”笔记的顺路改写：保留临水与绿色感，但省去往返北郊的时间。',
+        xhs: 'https://www.xiaohongshu.com/explore/69faad2d000000003703479d?xsec_source=app_share&type=normal&xsec_token=CB7tE6gDK5jw38b5vtL2XPDcG-jjcDS38CfSKEOnvUct8=',
+        gmap: 'Kamogawa+Delta+Kyoto'
+      },
+      {
+        name: '河原町晚餐', lat: 35.003780, lng: 135.768680,
+        type: 'food', time: '18:00', desc: '在返回大阪前吃饭；若当天很累，就在京都站解决。',
+        budget: '¥2,000–5,000/人', xhsKeyword: '京都 河原町 晚餐',
+        dianpingKeyword: '京都 河原町 晚餐', gmap: 'Kyoto+Kawaramachi+Station'
+      },
+      {
+        name: '贵船／三千院／祐斋亭／琉璃光院', lat: 35.121000, lng: 135.772000,
+        type: 'spot', time: '—', desc: '本版主动删除：分属北山、大原、岚山与八濑，无法在一天内顺滑串联。',
+        detail: '若后续确认“京都只想看山林、不要市区”，可把整天改成贵船＋一处北部景点；不要四处全塞。',
+        gmap: 'Kifune+Shrine+Kyoto'
+      }
+    ]
+  },
+  {
+    id: 5, label: '9/29 返程', date: '周二 · 17:00 关西机场 T1 起飞',
+    title: '中之岛半日，13:00 前离开梅田', color: '#6b6f93',
+    locations: [
+      {
+        name: '酒店退房并寄存行李', lat: 34.702485, lng: 135.495951,
+        type: 'hotel', time: '08:20', desc: '退房后只带随身包；中午回酒店取行李。', gmap: 'Osaka+Station'
+      },
+      {
+        name: '大阪府立中之岛图书馆', lat: 34.694400, lng: 135.505470,
+        type: 'spot', time: '09:00', desc: '1904 年历史建筑，平日 09:00 开门；先看中庭与建筑细节。',
+        detail: '官方周一至周五 09:00–20:00，周日与法定假日关闭。<br><a href="https://www.library.pref.osaka.jp/site/nakato/english-nakato.html" target="_blank">图书馆官方信息</a>',
+        xhs: 'https://www.xiaohongshu.com/explore/6915b6670000000007038e3b?xsec_source=app_share&type=normal&xsec_token=CBaWsQIl2S592nWhBvqEk1eT_2NhmP4_g66jYwfIkGR7c=',
+        gmap: 'Osaka+Prefectural+Nakanoshima+Library'
+      },
+      {
+        name: '大阪市中央公会堂', lat: 34.693790, lng: 135.506320,
+        type: 'spot', time: '09:20', desc: '红砖外观与河岸广场，作为图书馆到童书之森之间的顺路段。',
+        gmap: 'Osaka+City+Central+Public+Hall'
+      },
+      {
+        name: '童书之森 中之岛与青苹果', lat: 34.692880, lng: 135.505890,
+        type: 'spot', time: '09:30', desc: '安藤忠雄设计；即使不进馆，也可看临河建筑与户外青苹果。',
+        detail: '馆内需预约或使用当日先到名额，预约通常在到访前 14 天 10:00 开放；9/29 对应 9/15。每周一休馆。',
+        reserve: 'https://kodomohonnomori-osaka.resv.jp/', gmap: 'Kids+Plaza+Book+Forest+Nakanoshima'
+      },
+      {
+        name: 'Embankment Coffee', lat: 34.691170, lng: 135.508260,
+        type: 'drink', time: '11:15', desc: '河景咖啡作短休；若排队，直接改北滨附近任一空位咖啡店。',
+        budget: '约 ¥600–1,500/人', xhsKeyword: 'Embankment Coffee 大阪',
+        dianpingKeyword: 'Embankment Coffee 大阪', gmap: 'Embankment+Coffee+Osaka'
+      },
+      {
+        name: '大阪市立东洋陶瓷美术馆', lat: 34.693080, lng: 135.508420,
+        type: 'spot', time: '—', desc: '已从行程删除：官方公告 2026/8/3 起维修闭馆，预计 2027 年春重开。',
+        detail: '<a href="https://www.moco.or.jp/en/topics/3943/" target="_blank">闭馆公告</a>',
+        gmap: 'Museum+of+Oriental+Ceramics+Osaka'
+      },
+      {
+        name: '大阪站 → 关西机场 T1', lat: 34.702485, lng: 135.495951,
+        type: 'transport', time: '13:00', desc: '回酒店取行李后出发；目标 14:15 左右到 T1，为 17:00 国际航班留足时间。',
+        budget: '约 ¥1,210/人起', gmap: 'Osaka+Station'
+      },
+      {
+        name: '关西国际机场 T1', lat: 34.434160, lng: 135.244000,
+        type: 'transport', time: '14:15', desc: '办理值机、托运与出境；不要把午餐安排到机场到达之后才决定。',
+        gmap: 'Kansai+International+Airport+Terminal+1'
+      }
+    ]
+  }
+];
+
+// ╔══════════════════════════════════════════════════════════════╗
+// ║  REPLACE THIS SECTION — Overview tab content                ║
+// ╚══════════════════════════════════════════════════════════════╝
+
+function overviewContent() {
+  return `
+<div class="hero"><h1>关西四晚 · 海风与绿色建筑</h1><p class="subtitle">2026.09.25–09.29 · 两人 · 梅田为基地</p></div>
+<div class="info-grid">
+  <div class="info-card"><div class="label">酒店建议</div><div class="value">梅田／大阪站<br>步行 10 分钟内</div></div>
+  <div class="info-card"><div class="label">航班</div><div class="value">9/25 16:00 抵达<br>9/29 17:00 起飞 · KIX T1</div></div>
+  <div class="info-card"><div class="label">交通</div><div class="value">ICOCA＋单程购票<br>暂不买跨区周游券</div></div>
+  <div class="info-card"><div class="label">两人预算</div><div class="value">约 ¥70,000–110,000<br>不含机票与酒店</div></div>
+</div>
+<div class="section-head">先说结论</div>
+<div class="pay-summary"><h4>住梅田，不住心斋桥</h4>本次三个整天都要向大阪外移动，梅田去神户、京都和关西机场更省力；心斋桥只在夜生活与逛街上占优。</div>
+<div class="pay-summary"><h4>神户是主日，奈良是轻量日</h4>神户保留青苹果、美术馆、港湾日落和港塔夜景；奈良只走公园主轴，不增加宇治或远郊。</div>
+<div class="pay-summary"><h4>京都主动做减法</h4>笔记里的祐斋亭、贵船、三千院、琉璃光院分散在不同方向。本版保留南禅寺、无邻菴与鸭川；天气或体力不佳时也容易缩短。</div>
+<div class="section-head">行程概览</div>
+<div class="day-list">${DAYS.slice(1).map(d=>`<div class="card" onclick="go(${d.id})"><div class="name"><span class="dot" style="background:${d.color}"></span>${d.label} · ${d.title}</div><div class="desc">${d.date}</div></div>`).join('')}</div>
+<div class="section-head">出发前只订这两项</div>
+<div class="pay-summary"><h4>无邻菴 · 9/28</h4>建议 8/29 起查看预约；这是京都日唯一固定时间。</div>
+<div class="pay-summary"><h4>童书之森 · 9/29</h4>预约预计 9/15 10:00 开放；若没抢到，仍可看建筑与户外青苹果。</div>
+<div class="section-head">重要提醒</div>
+<div class="pay-summary"><h4>天气优先级</h4><span class="warn">神户港湾、奈良公园、鸭川都受雨风影响。</span> 出发前 72 小时按天气交换神户与奈良，京都的无邻菴预约时间除外。</div>
+<div class="pay-summary"><h4>支付与导航</h4>备少量现金，交通以 ICOCA 为主；地图卡片可直接调用 Apple Maps、Google Maps 或高德。餐厅按钮用于当天就近搜索，不把网红店当路线锚点。</div>
+<div class="section-head">图例</div>
+<div class="legend">
+  <div class="legend-item"><div class="legend-dot" style="background:var(--tint-red)"></div>餐厅</div>
+  <div class="legend-item"><div class="legend-dot" style="background:var(--tint-blue)"></div>景点</div>
+  <div class="legend-item"><div class="legend-dot" style="background:var(--tint-purple)"></div>酒吧</div>
+  <div class="legend-item"><div class="legend-dot" style="background:var(--tint-orange)"></div>酒店</div>
+</div>`;
+}
+
+// ╔══════════════════════════════════════════════════════════════╗
+// ║  ENGINE — Do not modify below unless customizing behavior   ║
+// ╚══════════════════════════════════════════════════════════════╝
+
+const map = L.map('map', { center: [HOTEL.lat || 35.69, HOTEL.lng || 139.74], zoom: 12, zoomControl: false, attributionControl: true });
+L.control.zoom({ position: 'topright' }).addTo(map);
+L.tileLayer('https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png', { maxZoom: 19 }).addTo(map);
+
+/* ── Geolocation ── */
+const LocateControl = L.Control.extend({
+  options: { position: 'bottomright' },
+  onAdd() {
+    const btn = L.DomUtil.create('button', 'locate-btn');
+    btn.innerHTML = '📍';
+    btn.title = '我的位置';
+    L.DomEvent.disableClickPropagation(btn);
+    btn.addEventListener('click', () => {
+      btn.classList.add('active');
+      map.locate({ setView: true, maxZoom: 15 });
+    });
+    this._btn = btn;
+    return btn;
+  }
+});
+new LocateControl().addTo(map);
+let locMarker, locCircle;
+map.on('locationfound', e => {
+  const r = e.accuracy / 2;
+  if (locMarker) { locMarker.setLatLng(e.latlng); locCircle.setLatLng(e.latlng).setRadius(r); }
+  else {
+    locMarker = L.marker(e.latlng, {
+      icon: L.divIcon({ className:'', html:'<div style="width:14px;height:14px;border-radius:50%;background:#007aff;border:2.5px solid #fff;box-shadow:0 0 6px rgba(0,122,255,.5)"></div><div class="loc-pulse" style="position:absolute;top:0;left:0"></div>', iconSize:[14,14], iconAnchor:[7,7] }),
+      zIndexOffset: 2000
+    }).addTo(map);
+    locCircle = L.circle(e.latlng, { radius: r, color: '#007aff', fillColor: '#007aff', fillOpacity: .08, weight: 1 }).addTo(map);
+  }
+});
+map.on('locationerror', () => {});
+
+function icon(color, emoji) {
+  return L.divIcon({ className: '', html: `<div style="width:28px;height:28px;border-radius:50%;background:${color};border:2.5px solid #fff;display:flex;align-items:center;justify-content:center;font-size:13px;box-shadow:0 2px 8px rgba(0,0,0,.18)">${emoji||''}</div>`, iconSize: [28,28], iconAnchor: [14,14], popupAnchor: [0,-16] });
+}
+
+if (HOTEL.lat) L.marker([HOTEL.lat, HOTEL.lng], { icon: icon('#ff9500','🏨'), zIndexOffset: 1000 }).addTo(map).bindPopup(`<b>${HOTEL.name}</b>`);
+
+let markers = [], polylines = [];
+const emojis = { food:'🍽️', spot:'📍', hotel:'🏨', transport:'🚃', drink:'🍺' };
+
+function clearMap() { markers.forEach(m=>map.removeLayer(m)); polylines.forEach(p=>map.removeLayer(p)); markers=[]; polylines=[]; }
+
+function showDay(idx) {
+  clearMap();
+  if (idx === 0) {
+    const pts = [];
+    DAYS.forEach(d => d.locations.forEach(l => { if(l.lat) pts.push([l.lat,l.lng]); }));
+    if(pts.length) map.fitBounds(pts, {padding:[30,30]});
+    DAYS.slice(1).forEach(d => {
+      d.locations.filter(l=>l.time!=='—').forEach(l => {
+        const m = L.circleMarker([l.lat,l.lng], { radius:4, fillColor:d.color, color:'#fff', weight:1.5, fillOpacity:.9 }).addTo(map).bindPopup(`<b>${l.name}</b><br><span style="color:#86868b">${d.label}</span>`);
+        markers.push(m);
+      });
+    });
+    return;
+  }
+  const day = DAYS.find(d=>d.id===idx);
+  if(!day) return;
+  const coords = [];
+  day.locations.forEach(l => {
+    if(!l.lat) return;
+    const m = L.marker([l.lat,l.lng], { icon: icon(day.color, emojis[l.type]||'📌') }).addTo(map);
+    const gmapQ = l.gmap||encodeURIComponent(l.name+' Japan');
+    m.bindPopup(`<b>${l.name}</b>${l.time!=='—'?'<br><span style="color:#86868b">'+l.time+'</span>':''}<br>${l.desc}${l.budget?'<br><span style="color:#ff9500">'+l.budget+'</span>':''}<br><a href="#" onclick="event.preventDefault();openAS('${l.name.replace(/'/g,"\\'")}',${l.lat},${l.lng},'${gmapQ}')">📍 导航</a>${l.xhs?' · <a href="'+l.xhs+'" target="_blank">📕 小红书</a>':''}`);
+    markers.push(m);
+    if(l.time!=='—') coords.push([l.lat,l.lng]);
+  });
+  if(coords.length>1) { const pl = L.polyline(coords, { color:day.color, weight:2.5, opacity:.5, dashArray:'6,5' }).addTo(map); polylines.push(pl); }
+  if(coords.length) map.fitBounds(coords, { padding:[40,40], maxZoom:14 });
+}
+
+// ══════════ RENDER ══════════
+function payChips(pay) {
+  if(!pay) return '';
+  let h = '<div class="pays">';
+  const m = { cash:'💴', card:'💳', suica:'Suica', paypay:'PayPay', alipay:'支付宝', wechat:'微信' };
+  for(const [k,label] of Object.entries(m)) {
+    if(pay[k]!==undefined) { const c = pay[k]===1?'ok':pay[k]===0.5?'idk':'no'; h += `<span class="pay ${c}">${label}</span>`; }
+  }
+  return h+'</div>';
+}
+
+// ── 运行环境检测：在第三方 App 的 WebView 里，自定义 scheme 基本会被拦截 ──
+const IN_APP_WEBVIEW = (() => {
+  const ua = (navigator.userAgent || '').toLowerCase();
+  return /micromessenger|xhs|xhsdiscover|discover\/|tiktok|aweme|weibo|qq\/|qqbrowser|alipayclient|dingtalk|lark|feishu|ucbrowser|baiduboxapp|toutiao|newsarticle/.test(ua);
+})();
+
+function xhsKeyword(loc) {
+  if(loc.xhsKeyword) return loc.xhsKeyword.trim();
+  return (loc.name||'').replace(/⭐.*$/g,'').replace(/（.*?）/g,'').replace(/\(.*?\)/g,'').replace(/\s+/g,' ').trim();
+}
+function xhsAppUrl(loc) { return `xhsdiscover://search/result?keyword=${encodeURIComponent(xhsKeyword(loc))}&target_search=notes&source=deeplink`; }
+function xhsWebUrl(loc) { return `https://www.xiaohongshu.com/search_result?keyword=${encodeURIComponent(xhsKeyword(loc))}&source=web_explore_feed`; }
+
+function dpKeyword(loc) {
+  if(loc.dianpingKeyword) return loc.dianpingKeyword.trim();
+  return (loc.name||'').replace(/⭐.*$/g,'').replace(/（.*?）/g,'').replace(/\(.*?\)/g,'').replace(/\s+/g,' ').trim();
+}
+function dpAppUrl(loc) { return `dianping://searchshoplist?keyword=${encodeURIComponent(dpKeyword(loc))}`; }
+function dpWebUrl(loc) { return `https://m.dianping.com/searchshop?keyword=${encodeURIComponent(dpKeyword(loc))}`; }
+
+window._extLocs = {};
+DAYS.forEach(d => d.locations.forEach(l => { window._extLocs[`${d.id}::${l.name}`] = l; }));
+window._xhsLocs = window._extLocs;
+
+function openExt(key, kind) {
+  const loc = window._extLocs[key]; if(!loc) return false;
+  if (IN_APP_WEBVIEW) {
+    window.location.href = kind==='dp' ? dpWebUrl(loc) : xhsWebUrl(loc);
+  } else {
+    window.location.href = kind==='dp' ? dpAppUrl(loc) : xhsAppUrl(loc);
+  }
+  return false;
+}
+function openXhs(key) { return openExt(key, 'xhs'); }
+function openDp(key)  { return openExt(key, 'dp'); }
+
+function locCard(loc, dayIdx) {
+  const dot = loc.type==='food'?'food':loc.type==='spot'?'spot':loc.type==='drink'?'drink':loc.type==='hotel'?'hotel':'transport';
+  const bdg = loc.type==='food'?'<span class="badge food">餐</span>':loc.type==='spot'?'<span class="badge spot">景</span>':loc.type==='drink'?'<span class="badge drink">饮</span>':'';
+  const uid = `d${dayIdx}-${loc.name.replace(/\W/g,'')}`;
+  const locKey = `${dayIdx}::${loc.name}`;
+  const gmapQ = loc.gmap||encodeURIComponent(loc.name+' Japan');
+  let lnk = `<button class="btn nav" onclick="openAS('${loc.name.replace(/'/g,"\\'")}',${loc.lat},${loc.lng},'${gmapQ}')">📍 导航</button>`;
+  if(loc.xhs||loc.xhsKeyword) {
+    const xhsHref = IN_APP_WEBVIEW ? xhsWebUrl(loc) : xhsAppUrl(loc);
+    const xhsLabel = IN_APP_WEBVIEW ? '📕 小红书' : '📕 小红书 App';
+    lnk += `<a href="${xhsHref}" onclick="return openXhs('${locKey.replace(/'/g,"\\'")}')" class="btn xhs">${xhsLabel}</a>`;
+  }
+  const dpEnabled = loc.dianping !== false &&
+    (loc.dianping || loc.dianpingKeyword || loc.type==='food' || loc.type==='drink');
+  if(dpEnabled) {
+    const dpHref = IN_APP_WEBVIEW ? dpWebUrl(loc) : dpAppUrl(loc);
+    const dpLabel = IN_APP_WEBVIEW ? '🍜 大众点评' : '🍜 大众点评 App';
+    lnk += `<a href="${dpHref}" onclick="return openDp('${locKey.replace(/'/g,"\\'")}')" class="btn dp">${dpLabel}</a>`;
+  }
+  if(loc.reserve) lnk += `<a href="${loc.reserve}" target="_blank" class="btn rsv">📅 预约</a>`;
+  return `<div class="tl-item"><div class="tl-dot ${dot}"></div><div class="card" onclick="if(!event.target.closest('.btn,.links'))toggle('${uid}')"><div class="time">${loc.time!=='—'?loc.time:'备选'}</div><div class="name">${bdg} ${loc.name}</div><div class="desc">${loc.desc}</div>${loc.budget?'<div class="budget">'+loc.budget+'</div>':''}${payChips(loc.pay)}<div class="links">${lnk}</div>${loc.detail?'<div class="details" id="'+uid+'">'+loc.detail.replace(/\n/g,'<br>')+'</div>':''}</div></div>`;
+}
+
+function renderDay(idx) {
+  const d = DAYS.find(x=>x.id===idx); if(!d) return '';
+  const main = d.locations.filter(l=>l.time!=='—');
+  const alt = d.locations.filter(l=>l.time==='—');
+  let h = `<div class="day-head"><h2>${d.title}</h2><p>${d.date}</p></div>`;
+  if(main.length) { h += '<div class="section-head">行程</div><div class="timeline">'; main.forEach(l => h += locCard(l, idx)); h += '</div>'; }
+  if(alt.length) { h += '<div class="section-head">备选</div><div class="timeline">'; alt.forEach(l => h += locCard(l, idx)); h += '</div>'; }
+  return h;
+}
+
+// ══════════ NAV ══════════
+let cur = 0;
+const tabsEl = document.getElementById('tabs');
+const contentEl = document.getElementById('content');
+
+DAYS.forEach(d => {
+  const btn = document.createElement('button');
+  btn.className = 'tab' + (d.id===0?' active':'');
+  btn.dataset.day = d.id;
+  btn.textContent = d.label;
+  tabsEl.appendChild(btn);
+});
+
+function go(idx) {
+  cur = idx;
+  tabsEl.querySelectorAll('.tab').forEach(t => t.classList.toggle('active', +t.dataset.day===idx));
+  contentEl.innerHTML = idx===0 ? overviewContent() : renderDay(idx);
+  showDay(idx);
+  contentEl.scrollTo({top:0});
+  const tab = tabsEl.querySelector(`[data-day="${idx}"]`);
+  if(tab) tab.scrollIntoView({behavior:'smooth', inline:'center', block:'nearest'});
+}
+
+function toggle(id) { const el=document.getElementById(id); if(el) el.classList.toggle('closed'); }
+
+tabsEl.addEventListener('click', e => { const t=e.target.closest('.tab'); if(t) go(+t.dataset.day); });
+
+go(0);
+
+/* ── Action Sheet for Navigation ── */
+const asOverlay = document.createElement('div');
+asOverlay.className = 'as-overlay';
+asOverlay.innerHTML = `<div class="as-sheet">
+  <div class="as-group" id="as-opts"></div>
+  <div class="as-group"><button class="as-item as-cancel" onclick="closeAS()">取消</button></div>
+</div>`;
+document.body.appendChild(asOverlay);
+asOverlay.addEventListener('click', e => { if (e.target === asOverlay) closeAS(); });
+
+const IS_IOS = /iPad|iPhone|iPod/.test(navigator.userAgent);
+function amapAppUrl(name, lat, lng) {
+  const scheme = IS_IOS ? 'iosamap' : 'androidamap';
+  return `${scheme}://viewMap?sourceApplication=trip&poiname=${encodeURIComponent(name)}&lat=${lat}&lon=${lng}&dev=0`;
+}
+function amapWebUrl(name, lat, lng) {
+  return `https://uri.amap.com/marker?position=${lng},${lat}&name=${encodeURIComponent(name)}&src=trip&coordinate=wgs84&callnative=1`;
+}
+function openAmap(name, lat, lng) {
+  if (IN_APP_WEBVIEW) { window.open(amapWebUrl(name, lat, lng)); return; }
+  window.location.href = amapAppUrl(name, lat, lng);
+}
+
+function openAS(name, lat, lng, gmap) {
+  const q = gmap || encodeURIComponent(name + ' Japan');
+  const encName = encodeURIComponent(name);
+  const safeName = name.replace(/'/g,"\\'");
+  // WebView 内 maps:// 通常被拦截，改用 https Apple Maps URL —— iOS 系统会自动拉起 Apple Maps
+  const appleUrl = IN_APP_WEBVIEW
+    ? `https://maps.apple.com/?q=${lat},${lng}&ll=${lat},${lng}&name=${encName}`
+    : `maps://maps.apple.com/?q=${lat},${lng}&name=${encName}`;
+  const googleUrl = `https://www.google.com/maps/search/?api=1&query=${q}`;
+  document.getElementById('as-opts').innerHTML =
+    `<button class="as-item" onclick="window.open('${appleUrl}');closeAS()">🍎 Apple Maps</button>` +
+    `<button class="as-item" onclick="window.open('${googleUrl}');closeAS()">🗺️ Google Maps</button>` +
+    `<button class="as-item" onclick="openAmap('${safeName}',${lat},${lng});closeAS()">🧭 高德地图 App</button>`;
+  asOverlay.classList.add('show');
+}
+function closeAS() { asOverlay.classList.remove('show'); }
+</script>
+</body>
+</html>
