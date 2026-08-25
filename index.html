@@ -237,7 +237,7 @@ a:hover { text-decoration: underline; }
 // ║  REPLACE THIS SECTION — Hotel and Days data                 ║
 // ╚══════════════════════════════════════════════════════════════╝
 
-const HOTEL = { name: '梅田／大阪站酒店（待定）', lat: 34.702485, lng: 135.495951 };
+const HOTEL = { name: 'Zentis Osaka（大阪曾提斯酒店）', lat: 34.695860, lng: 135.496060 };
 
 const DAYS = [
   { id: 0, label: '总览', color: '#176b87', locations: [] },
@@ -252,71 +252,112 @@ const DAYS = [
         gmap: 'Kansai+International+Airport+Terminal+1'
       },
       {
-        name: 'JR 关空快速／机场巴士', lat: 34.435000, lng: 135.243700,
-        type: 'transport', time: '17:15', desc: '首选 JR 关空快速直达大阪站，约 65 分钟；行李多时可改机场巴士到梅田。',
-        budget: '约 ¥1,210/人起', gmap: 'Kansai+Airport+Station'
+        name: '机场巴士 → Herbis Osaka', lat: 34.435000, lng: 135.243700,
+        type: 'transport', time: '17:30', desc: '首选机场巴士到 Herbis Osaka，约 60 分钟；下车后步行约 10 分钟到酒店。',
+        budget: '¥1,800/人',
+        detail: '巴士比拖行李穿过大阪站更轻松；若下一班等待过久，再改乘 HARUKA 到大阪站。班次以出发前官方时刻表为准。<br><a href="https://www.kate.co.jp/en/timetable/detail/UM/" target="_blank">机场巴士官方时刻表</a>',
+        gmap: 'Kansai+Airport+Terminal+1+Limousine+Bus'
       },
       {
-        name: '梅田／大阪站酒店（待定）', lat: 34.702485, lng: 135.495951,
-        type: 'hotel', time: '18:30', desc: '办理入住。订房建议控制在大阪站、阪急大阪梅田站步行 10 分钟内。',
-        detail: '梅田是本行程最省换乘的基地：JR 去神户／京都方便，返程也可从大阪站直达关西机场。',
-        gmap: 'Osaka+Station'
+        name: 'Zentis Osaka（大阪曾提斯酒店）', lat: 34.695860, lng: 135.496060,
+        type: 'hotel', time: '19:00', desc: '办理入住；酒店在堂岛浜，靠近北新地与中之岛。',
+        detail: '官方信息：Herbis Osaka 机场巴士站步行约 10 分钟、JR 大阪站樱桥口约 12 分钟、北新地站约 4 分钟。<br><a href="https://zentishotels.com/en/osaka/access/" target="_blank">酒店官方交通</a>',
+        gmap: 'Zentis+Osaka'
       },
       {
-        name: '梅田晚餐与 Grand Green Osaka', lat: 34.705530, lng: 135.493100,
-        type: 'food', time: '19:30', desc: '酒店附近吃饭，饭后只做轻松散步；不为名店排长队。',
-        budget: '¥2,000–5,000/人', xhsKeyword: '大阪 梅田 晚餐',
-        dianpingKeyword: '大阪 梅田 晚餐', gmap: 'Grand+Green+Osaka'
+        name: '堂岛／北新地晚餐', lat: 34.696620, lng: 135.497920,
+        type: 'food', time: '20:00', desc: '在酒店步行范围内吃落地餐；累了就直接选酒店餐厅，不再去难波。',
+        budget: '¥2,000–5,000/人', xhsKeyword: '大阪 堂岛 北新地 晚餐',
+        dianpingKeyword: '大阪 堂岛 北新地 晚餐', gmap: 'Dojima+Osaka+restaurants'
       }
     ]
   },
   {
     id: 2, label: '9/26 神户', date: '周六 · 建筑、海风与港湾日落',
-    title: '神户主日：青苹果到港塔夜景', color: '#1f7a8c',
+    title: '神户主日：港湾晨光到舞子日落', color: '#1f7a8c',
     locations: [
       {
-        name: '大阪站 → 灘／岩屋', lat: 34.702485, lng: 135.495951,
-        type: 'transport', time: '08:45', desc: '从梅田出发，先到兵库县立美术馆；当天路线一路向西，不走回头路。',
-        detail: '可搭 JR 至灘站，或阪神至岩屋站，再步行前往美术馆。', gmap: 'Osaka+Station'
+        name: '酒店附近早餐', lat: 34.695860, lng: 135.496060,
+        type: 'food', time: '08:10', desc: '在堂岛／大阪站方向吃一顿简单早餐；尽量 08:40 前结束。',
+        detail: '今天不带面包去港区当午餐，中午会在元町完整休息。若早上起晚，早餐改为面包或便利店外带。',
+        xhsKeyword: '大阪 梅田 早餐 咖啡', dianpingKeyword: '大阪 梅田 早餐', gmap: 'Zentis+Osaka'
       },
       {
-        name: '兵库县立美术馆与青苹果', lat: 34.699430, lng: 135.217650,
-        type: 'spot', time: '10:00', desc: '安藤忠雄建筑、海侧阶梯与巨大青苹果；本日第一锚点。',
-        budget: '常设展 ¥550/人',
-        detail: '官方开放 10:00–18:00，17:30 停止入场；周一休馆。先看建筑与海侧公共空间，再决定是否进展厅。<br><a href="https://www.artm.pref.hyogo.jp/eng/access/" target="_blank">美术馆官方信息</a>',
-        xhs: 'https://www.xiaohongshu.com/explore/69304740000000001e038083?xsec_source=app_share&type=normal&xsec_token=CBfc6PdAyblVYRWTEw2TFFZMwmTZs9FMFe8Mk36GU31v8=',
-        gmap: 'Hyogo+Prefectural+Museum+of+Art'
-      },
-      {
-        name: '三宫午餐', lat: 34.693960, lng: 135.194890,
-        type: 'food', time: '12:30', desc: '神户牛是可选升级，不强制；优先选能预约、离车站近的店。',
-        budget: '¥2,000–10,000/人', xhsKeyword: '神户 三宫 午餐 神户牛',
-        dianpingKeyword: '神户 三宫 神户牛', gmap: 'Kobe+Sannomiya+Station'
-      },
-      {
-        name: '南京町', lat: 34.688180, lng: 135.187180,
-        type: 'spot', time: '14:15', desc: '控制在 45–60 分钟，把它当作顺路小吃段，不在周末排长队。',
-        xhsKeyword: '神户 南京町', gmap: 'Nankinmachi+Kobe'
+        name: 'JR 大阪站 → JR 元町站', lat: 34.702485, lng: 135.495951,
+        type: 'transport', time: '08:50', desc: '搭 JR 神户线前往元町；选择停靠元町的普通或快速列车。',
+        detail: '车程约 30–35 分钟。若乘坐不停元町的新快速，在三之宫换乘普通列车即可。',
+        gmap: 'JR+Osaka+Station'
       },
       {
         name: '美利坚公园与 BE KOBE', lat: 34.682620, lng: 135.188270,
-        type: 'spot', time: '16:30', desc: '傍晚抵达，同时看白天、日落和亮灯后的港湾。',
-        detail: '9 月下旬日落约在 17:50 前后；BE KOBE 常需排队，若队伍太长就直接沿海散步。',
+        type: 'spot', time: '09:40', desc: '趁上午光线较柔和拍 BE KOBE、海洋博物馆、港塔外观和海边。',
+        detail: '从 JR 元町站步行约 15 分钟。上午只拍户外，不登港塔；10:40 开始往回走，避免挤压午休和西海岸时间。',
         xhs: 'https://www.xiaohongshu.com/explore/68b51f3e000000001d01cc31?xsec_source=app_share&type=normal&xsec_token=CB04Hb8R99yvRfTDf4OLoEifV22608b7OTXCd4m0uIKRo=',
         gmap: 'Meriken+Park+Kobe'
       },
       {
-        name: '神户港塔', lat: 34.682630, lng: 135.186690,
-        type: 'spot', time: '18:05', desc: '日落后登塔看港湾夜景；天气差可只看外观，改去 MOSAIC。',
-        budget: '屋顶＋展望层 ¥1,200/人',
-        detail: '官方通常开放至 23:00，最晚 22:30 入场；指定日期票可提前购买。<br><a href="https://www.kobe-port-tower.com/en/" target="_blank">神户港塔官方信息</a>',
-        reserve: 'https://www.kobe-port-tower.com/en/', gmap: 'Kobe+Port+Tower'
+        name: 'JR 元町站 → JR 灘站', lat: 34.689620, lng: 135.187640,
+        type: 'transport', time: '11:00', desc: '步行回元町站，搭 JR 普通列车到灘站，再向南步行约 10 分钟。',
+        detail: '元町至灘车程约 6–8 分钟；这段虽然折返，但只用 JR，不换地铁、不坐公交。',
+        gmap: 'JR+Motomachi+Station+Kobe'
       },
       {
-        name: 'Harborland MOSAIC 晚餐', lat: 34.679620, lng: 135.181750,
-        type: 'food', time: '19:15', desc: '港景晚餐与商场休息，之后从神户站返回梅田。',
-        budget: '¥2,000–6,000/人', xhsKeyword: '神户 MOSAIC 晚餐 港景',
-        dianpingKeyword: '神户 MOSAIC 晚餐', gmap: 'Kobe+Harborland+umie+MOSAIC'
+        name: '兵库县立美术馆与青苹果', lat: 34.699430, lng: 135.217650,
+        type: 'spot', time: '11:20', desc: '只拍安藤忠雄建筑、海侧阶梯、圆形空间与巨大青苹果，不安排完整看展。',
+        detail: '55 分钟用于建筑摄影足够；官方开放 10:00–18:00，周一休馆。JR 灘站南口至美术馆步行约 10 分钟。<br><a href="https://www.artm.pref.hyogo.jp/access_m" target="_blank">美术馆官方交通与开放信息</a>',
+        xhs: 'https://www.xiaohongshu.com/explore/69304740000000001e038083?xsec_source=app_share&type=normal&xsec_token=CBfc6PdAyblVYRWTEw2TFFZMwmTZs9FMFe8Mk36GU31v8=',
+        gmap: 'Hyogo+Prefectural+Museum+of+Art'
+      },
+      {
+        name: 'JR 灘站 → JR 元町站', lat: 34.705580, lng: 135.216080,
+        type: 'transport', time: '12:25', desc: '原路步行回灘站，搭普通列车返回元町；不再绕去三宫。',
+        detail: '午餐、下午茶和后续去须磨都以元町站为中心，减少市区内换线。',
+        gmap: 'JR+Nada+Station+Kobe'
+      },
+      {
+        name: '元町午餐', lat: 34.688500, lng: 135.188480,
+        type: 'food', time: '12:45', desc: '完整坐下休息 60 分钟；选元町站至旧居留地一带，不为网红店排长队。',
+        budget: '¥1,500–4,000/人',
+        detail: '今天不再用面包代替午餐。若想吃神户牛，可选无需长时间等位的午市；14:35 离开下午茶才是唯一硬截止。',
+        xhsKeyword: '神户 元町 午餐 神户牛', dianpingKeyword: '神户 元町 午餐', gmap: 'Motomachi+Kobe+restaurants'
+      },
+      {
+        name: 'Cafe & Bar Anthem', lat: 34.686710, lng: 135.189060,
+        type: 'drink', time: '13:55', desc: '吃招牌纱布芝士蛋糕；控制在 40 分钟，14:35 必须结账离开。',
+        budget: '约 ¥1,000–2,000/人 · 仅现金',
+        detail: '地址：神户市中央区海岸通 2-3-7 4F。当前官方账号标注 9:00–22:00、无固定休息日、仅现金；出发前一周再确认临时营业调整。<br><a href="https://www.instagram.com/cafeandbaranthem/" target="_blank">店铺官方 Instagram</a>',
+        xhsKeyword: '神户 cafe bar anthem 纱布芝士蛋糕', dianpingKeyword: '神户 Cafe Bar Anthem',
+        gmap: 'cafe+and+bar+anthem+Kobe'
+      },
+      {
+        name: 'JR 元町站 → JR 须磨站', lat: 34.689620, lng: 135.187640,
+        type: 'transport', time: '14:50', desc: '搭 JR 神户线直达须磨，车程约 11–13 分钟。',
+        detail: '下午开始一路向西，不再折返市中心。建议 14:35 从咖啡店离开，给步行和候车留出余量。',
+        gmap: 'JR+Motomachi+Station+Kobe'
+      },
+      {
+        name: '须磨海岸', lat: 34.640640, lng: 135.112090,
+        type: 'spot', time: '15:10', desc: '安排约 70 分钟散步、发呆和拍海边人像；JR 须磨站出站即到海岸。',
+        detail: '16:20 开始收尾，16:25 返回车站。若前段延误，优先缩短这里，但至少保留 45 分钟。',
+        xhsKeyword: '神户 须磨海岸 拍照 日系', gmap: 'Suma+Beach+Kobe'
+      },
+      {
+        name: 'JR 须磨站 → JR 舞子站', lat: 34.642120, lng: 135.112150,
+        type: 'transport', time: '16:25', desc: '搭 JR 神户线继续向西，车程约 7–8 分钟；出站步行前往舞子公园。',
+        detail: '目标 16:45 左右抵达公园，距离日落仍有约 1 小时。',
+        gmap: 'JR+Suma+Station+Kobe'
+      },
+      {
+        name: '舞子公园与明石海峡大桥', lat: 34.630650, lng: 135.034360,
+        type: 'spot', time: '16:45', desc: '先拍金色时段，约 17:51 看日落，再留到 18:15 拍蓝调与大桥亮灯。',
+        detail: '以户外海岸、梦镜和桥下视角为主，不进入舞子海上散步道，避免 17:30 最晚入场时间打乱拍摄节奏。<br><a href="https://hyogo-maikopark.jp/en/" target="_blank">舞子公园官方信息</a>',
+        xhsKeyword: '神户 舞子公园 明石海峡大桥 日落', gmap: 'Maiko+Park+Kobe'
+      },
+      {
+        name: '舞子／三宫晚餐后返阪', lat: 34.633230, lng: 135.033490,
+        type: 'food', time: '18:20', desc: '按体力决定在舞子简单吃，或返回三宫吃正式晚餐；之后回大阪。',
+        budget: '¥1,500–5,000/人',
+        xhsKeyword: '神户 舞子 三宫 晚餐', dianpingKeyword: '神户 三宫 晚餐', gmap: 'JR+Maiko+Station'
       }
     ]
   },
@@ -330,37 +371,38 @@ const DAYS = [
         gmap: 'Kintetsu+Nara+Station'
       },
       {
-        name: '奈良公园', lat: 34.685080, lng: 135.843090,
-        type: 'spot', time: '09:30', desc: '先散步与看鹿；鹿是野生动物，食物拿稳，不逗弄。',
-        detail: '奈良公园约 660 公顷，不追求走遍；当天只保东大寺—二月堂—春日大社—奈良町主线。<br><a href="https://www.visitnara.jp/destinations/area/nara-park/" target="_blank">奈良官方区域指南</a>',
-        gmap: 'Nara+Park'
+        name: '兴福寺与奈良公园', lat: 34.683040, lng: 135.832760,
+        type: 'spot', time: '09:25', desc: '从近铁奈良站进入公园主轴，边走边看鹿；鹿是野生动物，不逗弄。',
+        detail: '奈良公园约 660 公顷，不追求走遍；当天只保兴福寺—东大寺—二月堂—春日大社—奈良町主线。<br><a href="https://narashikanko.or.jp/en/course/detail_28.html" target="_blank">奈良官方步行路线</a>',
+        gmap: 'Kofukuji+Temple+Nara'
       },
       {
         name: '东大寺大佛殿', lat: 34.689000, lng: 135.839810,
-        type: 'spot', time: '10:30', desc: '奈良日唯一必进景点；周日上午早点到，避开午后团客。',
+        type: 'spot', time: '10:15', desc: '奈良日唯一必进景点；周日上午早点到，避开午后团客。',
         budget: '¥800/人',
         detail: '4–10 月官方开放 07:30–17:30，全年开放。<br><a href="https://www.visitnara.jp/venues/A00485/" target="_blank">东大寺官方旅游信息</a>',
         gmap: 'Todaiji+Temple'
       },
       {
         name: '二月堂', lat: 34.689790, lng: 135.841920,
-        type: 'spot', time: '12:00', desc: '从高处看奈良市景，比在鹿群里久留更安静。',
+        type: 'spot', time: '11:30', desc: '从高处看奈良市景，比在鹿群里久留更安静。',
         gmap: 'Nigatsudo+Nara'
       },
       {
-        name: '奈良公园南侧午餐', lat: 34.681080, lng: 135.837840,
-        type: 'food', time: '13:00', desc: '柿叶寿司、茶粥或乌冬三选一；不为网红店绕路。',
-        budget: '¥1,200–3,000/人', xhsKeyword: '奈良公园 午餐 柿叶寿司',
-        dianpingKeyword: '奈良公园 午餐', gmap: 'Nara+Park+restaurants'
-      },
-      {
         name: '春日大社', lat: 34.681380, lng: 135.848430,
-        type: 'spot', time: '14:15', desc: '沿林间参道慢走；如果体力下降，可在此直接缩短路线。',
+        type: 'spot', time: '12:15', desc: '沿林间参道慢走；如果体力下降，可从本殿附近乘巴士返回市区。',
+        detail: '9 月一般参拜 06:30–17:30；当天仪式可能改变开放范围。',
         gmap: 'Kasuga+Taisha'
       },
       {
+        name: '奈良町午餐', lat: 34.676520, lng: 135.833080,
+        type: 'food', time: '13:45', desc: '柿叶寿司、茶粥或大和蔬菜三选一；不为网红店绕路。',
+        budget: '¥1,500–3,500/人', xhsKeyword: '奈良町 午餐 大和蔬菜',
+        dianpingKeyword: '奈良町 午餐', gmap: 'Naramachi+restaurants'
+      },
+      {
         name: '奈良町', lat: 34.675410, lng: 135.831740,
-        type: 'spot', time: '16:15', desc: '老街、杂货与咖啡收尾，18:00 前后返程。',
+        type: 'spot', time: '15:00', desc: '老街、杂货与咖啡收尾，17:30 前后返程。',
         xhsKeyword: '奈良町 citywalk 咖啡', gmap: 'Naramachi+Nara'
       }
     ]
@@ -370,13 +412,18 @@ const DAYS = [
     title: '京都取舍版：南禅寺、无邻菴、鸭川', color: '#4b7f52',
     locations: [
       {
-        name: '大阪站 → 京都／蹴上', lat: 35.007650, lng: 135.759330,
-        type: 'transport', time: '07:45', desc: 'JR 到京都后转地铁蹴上；避开伏见稻荷、清水寺等拥挤大环线。',
+        name: '酒店 → 京都／蹴上', lat: 35.007650, lng: 135.759330,
+        type: 'transport', time: '07:30', desc: 'JR 到京都后转地铁蹴上；避开伏见稻荷、清水寺等拥挤大环线。',
         gmap: 'Keage+Station+Kyoto'
       },
       {
+        name: '蹴上倾斜铁道', lat: 35.009450, lng: 135.788530,
+        type: 'spot', time: '08:50', desc: '旧铁路与琵琶湖疏水遗迹，作为南禅寺前的短步行。',
+        gmap: 'Keage+Incline+Kyoto'
+      },
+      {
         name: '南禅寺', lat: 35.011330, lng: 135.793110,
-        type: 'spot', time: '09:00', desc: '山门、水路阁与庭园；笔记里的绿色京都元素在这里最集中。',
+        type: 'spot', time: '09:20', desc: '山门、水路阁与庭园；笔记里的绿色京都元素在这里最集中。',
         budget: '境内免费；庭园另付',
         detail: '3–11 月官方参观时段 08:40–17:00，结束前 20 分钟停止入场。<br><a href="https://nanzenji.or.jp/about_rinzaishu/visit" target="_blank">南禅寺官方参观信息</a>',
         xhs: 'https://www.xiaohongshu.com/explore/685be7db000000000d01b6cc?xsec_source=app_share&type=normal&xsec_token=CB04wzPzsdZktGdp_apE9tNpY4CDGPBQlhAUTfJFM_cAI=',
@@ -384,14 +431,14 @@ const DAYS = [
       },
       {
         name: '无邻菴', lat: 35.011620, lng: 135.790710,
-        type: 'spot', time: '10:45', desc: '与南禅寺相邻的近代日式庭园；本日唯一需要预约的锚点。',
+        type: 'spot', time: '11:00', desc: '与南禅寺相邻的近代日式庭园；本日唯一需要预约的锚点。',
         budget: '以预约页为准',
-        detail: '官方按小时限流，建议预约；9/28 名额预计从 8/29 起开放。预约迟到可能无法入场，预付后取消通常不退款。',
-        reserve: 'https://murin-an.jp/info/', gmap: 'Murin-an+Kyoto'
+        detail: '官方 09:00–18:00，并按小时预约入场；9/28 名额预计从 8/29 起开放。预约迟到可能无法入场。',
+        reserve: 'https://murin-an.jp/en/', gmap: 'Murin-an+Kyoto'
       },
       {
         name: '南禅寺周边午餐', lat: 35.009800, lng: 135.789770,
-        type: 'food', time: '12:15', desc: '汤豆腐或荞麦面，选择步行范围内有空位的店。',
+        type: 'food', time: '12:30', desc: '汤豆腐或荞麦面，选择步行范围内有空位的店；不再绑定第二个硬预约。',
         budget: '¥1,500–4,000/人', xhsKeyword: '京都 南禅寺 汤豆腐 午餐',
         dianpingKeyword: '京都 南禅寺 午餐', gmap: 'Nanzenji+restaurants'
       },
@@ -401,15 +448,15 @@ const DAYS = [
         gmap: 'Gion+Shirakawa+Kyoto'
       },
       {
-        name: '鸭川三角洲', lat: 35.030020, lng: 135.771530,
-        type: 'spot', time: '16:30', desc: '以河岸、草地和散步收尾；替代交通更远的上贺茂段。',
-        detail: '这是对你所发“上贺茂鸭川”笔记的顺路改写：保留临水与绿色感，但省去往返北郊的时间。',
+        name: '鸭川三条段', lat: 35.008540, lng: 135.771350,
+        type: 'spot', time: '16:15', desc: '沿河岸散步收尾；替代交通更远的上贺茂段。',
+        detail: '这是对你所发“上贺茂鸭川”笔记的顺路改写：保留临水与绿色感，但省去往返北郊和回头路。',
         xhs: 'https://www.xiaohongshu.com/explore/69faad2d000000003703479d?xsec_source=app_share&type=normal&xsec_token=CB7tE6gDK5jw38b5vtL2XPDcG-jjcDS38CfSKEOnvUct8=',
-        gmap: 'Kamogawa+Delta+Kyoto'
+        gmap: 'Kamo+River+Sanjo+Kyoto'
       },
       {
-        name: '河原町晚餐', lat: 35.003780, lng: 135.768680,
-        type: 'food', time: '18:00', desc: '在返回大阪前吃饭；若当天很累，就在京都站解决。',
+        name: '先斗町／河原町晚餐', lat: 35.005550, lng: 135.770550,
+        type: 'food', time: '17:30', desc: '在返回大阪前吃饭；之后从京都河原町搭阪急回大阪梅田。',
         budget: '¥2,000–5,000/人', xhsKeyword: '京都 河原町 晚餐',
         dianpingKeyword: '京都 河原町 晚餐', gmap: 'Kyoto+Kawaramachi+Station'
       },
@@ -426,8 +473,8 @@ const DAYS = [
     title: '中之岛半日，13:00 前离开梅田', color: '#6b6f93',
     locations: [
       {
-        name: '酒店退房并寄存行李', lat: 34.702485, lng: 135.495951,
-        type: 'hotel', time: '08:20', desc: '退房后只带随身包；中午回酒店取行李。', gmap: 'Osaka+Station'
+        name: 'Zentis Osaka 退房寄存', lat: 34.695860, lng: 135.496060,
+        type: 'hotel', time: '08:20', desc: '退房后只带随身包；中午回酒店取行李。', gmap: 'Zentis+Osaka'
       },
       {
         name: '大阪府立中之岛图书馆', lat: 34.694400, lng: 135.505470,
@@ -438,31 +485,33 @@ const DAYS = [
       },
       {
         name: '大阪市中央公会堂', lat: 34.693790, lng: 135.506320,
-        type: 'spot', time: '09:20', desc: '红砖外观与河岸广场，作为图书馆到童书之森之间的顺路段。',
+        type: 'spot', time: '09:35', desc: '红砖外观与河岸广场，作为图书馆到童书之森之间的顺路段。',
         gmap: 'Osaka+City+Central+Public+Hall'
       },
       {
         name: '童书之森 中之岛与青苹果', lat: 34.692880, lng: 135.505890,
-        type: 'spot', time: '09:30', desc: '安藤忠雄设计；即使不进馆，也可看临河建筑与户外青苹果。',
-        detail: '馆内需预约或使用当日先到名额，预约通常在到访前 14 天 10:00 开放；9/29 对应 9/15。每周一休馆。',
-        reserve: 'https://kodomohonnomori-osaka.resv.jp/', gmap: 'Kids+Plaza+Book+Forest+Nakanoshima'
+        type: 'spot', time: '10:00', desc: '安藤忠雄设计；本次以临河建筑与户外青苹果为主，不把入馆当必做。',
+        detail: '馆内主要面向婴幼儿至中学生，成人若想入馆需预约或使用当日先到名额；周一休馆。',
+        gmap: 'Nakanoshima+Children+Book+Forest'
       },
       {
-        name: 'Embankment Coffee', lat: 34.691170, lng: 135.508260,
-        type: 'drink', time: '11:15', desc: '河景咖啡作短休；若排队，直接改北滨附近任一空位咖啡店。',
-        budget: '约 ¥600–1,500/人', xhsKeyword: 'Embankment Coffee 大阪',
+        name: '北浜河岸咖啡', lat: 34.691170, lng: 135.508260,
+        type: 'drink', time: '10:45', desc: 'Embankment Coffee 为首选；若尚未营业或排队，直接选附近空位店。',
+        budget: '约 ¥600–1,500/人', xhsKeyword: 'Embankment Coffee 大阪 北浜',
         dianpingKeyword: 'Embankment Coffee 大阪', gmap: 'Embankment+Coffee+Osaka'
       },
       {
         name: '大阪市立东洋陶瓷美术馆', lat: 34.693080, lng: 135.508420,
         type: 'spot', time: '—', desc: '已从行程删除：官方公告 2026/8/3 起维修闭馆，预计 2027 年春重开。',
-        detail: '<a href="https://www.moco.or.jp/en/topics/3943/" target="_blank">闭馆公告</a>',
+        detail: '<a href="https://www.moco.or.jp/en/whatsnew/newarrival/3943/" target="_blank">官方闭馆公告</a>',
         gmap: 'Museum+of+Oriental+Ceramics+Osaka'
       },
       {
-        name: '大阪站 → 关西机场 T1', lat: 34.702485, lng: 135.495951,
-        type: 'transport', time: '13:00', desc: '回酒店取行李后出发；目标 14:15 左右到 T1，为 17:00 国际航班留足时间。',
-        budget: '约 ¥1,210/人起', gmap: 'Osaka+Station'
+        name: 'Herbis Osaka → 关西机场 T1', lat: 34.699130, lng: 135.495210,
+        type: 'transport', time: '13:00', desc: '11:45 前回酒店取行李，步行到 Herbis Osaka 乘机场巴士；目标 14:15–14:30 到 T1。',
+        budget: '¥1,800/人',
+        detail: '机场巴士官方标称约 60 分钟；出发前再次核对 9/29 当天班次，至少预留一班余量。',
+        gmap: 'Herbis+Osaka+Airport+Bus'
       },
       {
         name: '关西国际机场 T1', lat: 34.434160, lng: 135.244000,
@@ -479,24 +528,26 @@ const DAYS = [
 
 function overviewContent() {
   return `
-<div class="hero"><h1>关西四晚 · 海风与绿色建筑</h1><p class="subtitle">2026.09.25–09.29 · 两人 · 梅田为基地</p></div>
+<div class="hero"><h1>关西四晚 · 海风与绿色建筑</h1><p class="subtitle">2026.09.25–09.29 · 两人 · Zentis Osaka 为基地</p></div>
 <div class="info-grid">
-  <div class="info-card"><div class="label">酒店建议</div><div class="value">梅田／大阪站<br>步行 10 分钟内</div></div>
+  <div class="info-card"><div class="label">酒店</div><div class="value">Zentis Osaka<br>堂岛浜／北新地</div></div>
   <div class="info-card"><div class="label">航班</div><div class="value">9/25 16:00 抵达<br>9/29 17:00 起飞 · KIX T1</div></div>
   <div class="info-card"><div class="label">交通</div><div class="value">ICOCA＋单程购票<br>暂不买跨区周游券</div></div>
   <div class="info-card"><div class="label">两人预算</div><div class="value">约 ¥70,000–110,000<br>不含机票与酒店</div></div>
 </div>
 <div class="section-head">先说结论</div>
-<div class="pay-summary"><h4>住梅田，不住心斋桥</h4>本次三个整天都要向大阪外移动，梅田去神户、京都和关西机场更省力；心斋桥只在夜生活与逛街上占优。</div>
-<div class="pay-summary"><h4>神户是主日，奈良是轻量日</h4>神户保留青苹果、美术馆、港湾日落和港塔夜景；奈良只走公园主轴，不增加宇治或远郊。</div>
+<div class="pay-summary"><h4>酒店位置合适，不换酒店</h4>Zentis Osaka 位于堂岛浜，去大阪站、北新地和中之岛都方便；三个跨城日无需拖行李换住处。</div>
+<div class="pay-summary"><h4>神户是主日，奈良是轻量日</h4>神户保留美利坚公园晨光、美术馆建筑、须磨海岸和舞子日落；奈良只走公园主轴，不增加宇治或远郊。</div>
 <div class="pay-summary"><h4>京都主动做减法</h4>笔记里的祐斋亭、贵船、三千院、琉璃光院分散在不同方向。本版保留南禅寺、无邻菴与鸭川；天气或体力不佳时也容易缩短。</div>
 <div class="section-head">行程概览</div>
 <div class="day-list">${DAYS.slice(1).map(d=>`<div class="card" onclick="go(${d.id})"><div class="name"><span class="dot" style="background:${d.color}"></span>${d.label} · ${d.title}</div><div class="desc">${d.date}</div></div>`).join('')}</div>
-<div class="section-head">出发前只订这两项</div>
-<div class="pay-summary"><h4>无邻菴 · 9/28</h4>建议 8/29 起查看预约；这是京都日唯一固定时间。</div>
-<div class="pay-summary"><h4>童书之森 · 9/29</h4>预约预计 9/15 10:00 开放；若没抢到，仍可看建筑与户外青苹果。</div>
+<div class="section-head">建议提前处理</div>
+<div class="pay-summary"><h4>神户日唯一硬截止 · 14:35</h4>Cafe & Bar Anthem 最晚 14:35 结账离开，才能为须磨留出约 70 分钟，并在 16:45 左右抵达舞子等待日落。</div>
+<div class="pay-summary"><h4>无邻菴 · 9/28 11:00 左右</h4>建议 8/29 起查看预约；这是京都日唯一固定时间。</div>
+<div class="pay-summary"><h4>童书之森 · 可不预约</h4>本次以建筑和户外青苹果为主；只有确定想入馆时，才在临近日期查看预约。</div>
 <div class="section-head">重要提醒</div>
-<div class="pay-summary"><h4>天气优先级</h4><span class="warn">神户港湾、奈良公园、鸭川都受雨风影响。</span> 出发前 72 小时按天气交换神户与奈良，京都的无邻菴预约时间除外。</div>
+<div class="pay-summary"><h4>天气优先级</h4><span class="warn">神户港湾、奈良公园、鸭川都受雨风影响。</span> 出发前 72 小时按天气微调室内外停留；无邻菴预约确定后，不建议整日互换。</div>
+<div class="pay-summary"><h4>已主动删除</h4>京都的贵船、三千院、祐斋亭、琉璃光院无法在一天内顺滑串联；大阪东洋陶瓷美术馆 2026/8/3 起维修闭馆至 2027 年春。</div>
 <div class="pay-summary"><h4>支付与导航</h4>备少量现金，交通以 ICOCA 为主；地图卡片可直接调用 Apple Maps、Google Maps 或高德。餐厅按钮用于当天就近搜索，不把网红店当路线锚点。</div>
 <div class="section-head">图例</div>
 <div class="legend">
