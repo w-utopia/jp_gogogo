@@ -722,7 +722,9 @@ function locCard(loc, dayIdx) {
   const locKey = `${dayIdx}::${loc.name}`;
   const gmapQ = loc.gmap||encodeURIComponent(loc.name+' Japan');
   let lnk = `<button class="btn nav" onclick="openAS('${loc.name.replace(/'/g,"\\'")}',${loc.lat},${loc.lng},'${gmapQ}')">📍 导航</button>`;
-  if(loc.xhs||loc.xhsKeyword) {
+  if(loc.xhs) {
+    lnk += `<a href="${loc.xhs}" target="_blank" rel="noopener" class="btn xhs">📕 小红书笔记</a>`;
+  } else if(loc.xhsKeyword) {
     const xhsHref = IN_APP_WEBVIEW ? xhsWebUrl(loc) : xhsAppUrl(loc);
     const xhsLabel = IN_APP_WEBVIEW ? '📕 小红书' : '📕 小红书 App';
     lnk += `<a href="${xhsHref}" onclick="return openXhs('${locKey.replace(/'/g,"\\'")}')" class="btn xhs">${xhsLabel}</a>`;
