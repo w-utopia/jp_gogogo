@@ -362,48 +362,79 @@ const DAYS = [
     ]
   },
   {
-    id: 3, label: '9/27 奈良', date: '周日 · 只走奈良公园一条线',
-    title: '奈良轻量日：大佛、鹿与老街', color: '#8a7d3b',
+    id: 3, label: '9/27 奈良＋宇治', date: '周日 · 上午山麓看鹿，下午河岸散步',
+    title: '鹿与河岸：奈良半日＋宇治半日', color: '#8a7d3b',
     locations: [
       {
-        name: '大阪梅田 → 近铁奈良', lat: 34.684350, lng: 135.827620,
-        type: 'transport', time: '08:15', desc: '梅田经难波换乘近铁；约 1 小时，尽量 09:30 前到。',
-        gmap: 'Kintetsu+Nara+Station'
+        name: 'JR 大阪站 → JR 奈良站', lat: 34.680920, lng: 135.818980,
+        type: 'transport', time: '08:10', desc: '从酒店步行到大阪站，搭 JR 大和路线快速；约 50–60 分钟，无需在难波换线。',
+        detail: '上午选择 JR 奈良站进出，是为了午后直接搭 JR 奈良线去宇治；建议在大阪站先买好饮用水。',
+        gmap: 'JR+Nara+Station'
       },
       {
-        name: '兴福寺与奈良公园', lat: 34.683040, lng: 135.832760,
-        type: 'spot', time: '09:25', desc: '从近铁奈良站进入公园主轴，边走边看鹿；鹿是野生动物，不逗弄。',
-        detail: '奈良公园约 660 公顷，不追求走遍；当天只保兴福寺—东大寺—二月堂—春日大社—奈良町主线。<br><a href="https://narashikanko.or.jp/en/course/detail_28.html" target="_blank">奈良官方步行路线</a>',
-        gmap: 'Kofukuji+Temple+Nara'
+        name: 'JR 奈良站 → 春日大社本殿', lat: 34.681380, lng: 135.848430,
+        type: 'transport', time: '09:10', desc: '从东口乘市内公交到春日大社本殿方向，约 15–20 分钟；先到最东侧，再一路向西走。',
+        detail: '公交班次以当天站牌为准；若刚好错过直达车，可乘市内循环到「春日大社表参道」后步行。',
+        gmap: 'Kasuga+Taisha+Honden+Bus+Stop'
       },
       {
-        name: '东大寺大佛殿', lat: 34.689000, lng: 135.839810,
-        type: 'spot', time: '10:15', desc: '奈良日唯一必进景点；周日上午早点到，避开午后团客。',
-        budget: '¥800/人',
-        detail: '4–10 月官方开放 07:30–17:30，全年开放。<br><a href="https://www.visitnara.jp/venues/A00485/" target="_blank">东大寺官方旅游信息</a>',
-        gmap: 'Todaiji+Temple'
-      },
-      {
-        name: '二月堂', lat: 34.689790, lng: 135.841920,
-        type: 'spot', time: '11:30', desc: '从高处看奈良市景，比在鹿群里久留更安静。',
-        gmap: 'Nigatsudo+Nara'
-      },
-      {
-        name: '春日大社', lat: 34.681380, lng: 135.848430,
-        type: 'spot', time: '12:15', desc: '沿林间参道慢走；如果体力下降，可从本殿附近乘巴士返回市区。',
-        detail: '9 月一般参拜 06:30–17:30；当天仪式可能改变开放范围。',
+        name: '春日大社参道与外围', lat: 34.681380, lng: 135.848430,
+        type: 'spot', time: '09:35', desc: '看石灯笼、林间参道和鹿，停留约 35–40 分钟；不安排宝物殿或本殿深度参观。',
+        detail: '9 月神社外围通常 06:00 起开放；当天仪式可能调整局部通行。<br><a href="https://www.visitnara.jp/venues/A00487/" target="_blank">春日大社官方旅游信息</a>',
         gmap: 'Kasuga+Taisha'
       },
       {
-        name: '奈良町午餐', lat: 34.676520, lng: 135.833080,
-        type: 'food', time: '13:45', desc: '柿叶寿司、茶粥或大和蔬菜三选一；不为网红店绕路。',
-        budget: '¥1,500–3,500/人', xhsKeyword: '奈良町 午餐 大和蔬菜',
-        dianpingKeyword: '奈良町 午餐', gmap: 'Naramachi+restaurants'
+        name: '若草山山麓', lat: 34.691100, lng: 135.854090,
+        type: 'spot', time: '10:20', desc: '从春日大社步行约 15 分钟到山麓，只走草坡低处、看鹿和拍开阔景，不爬完整山顶。',
+        budget: '入山 ¥150/人',
+        detail: '9 月处于开山期，官方开放 09:00–17:00。天气炎热或前夜下雨时，就在山麓停留，不勉强上坡。<br><a href="https://narashikanko.or.jp/spot/detail_10108.html" target="_blank">若草山官方信息</a>',
+        xhsKeyword: '奈良 若草山 山麓 小鹿 拍照', gmap: 'Mt+Wakakusa+South+Gate'
       },
       {
-        name: '奈良町', lat: 34.675410, lng: 135.831740,
-        type: 'spot', time: '15:00', desc: '老街、杂货与咖啡收尾，17:30 前后返程。',
-        xhsKeyword: '奈良町 citywalk 咖啡', gmap: 'Naramachi+Nara'
+        name: '奈良公园看鹿', lat: 34.684390, lng: 135.843210,
+        type: 'spot', time: '11:10', desc: '沿春日野园地一带慢慢向西，集中看鹿和休息，不再绕去东大寺、二月堂或奈良町。',
+        detail: '鹿是野生动物，只喂官方鹿仙贝；鹿吃完后把双手摊开，不拿食物逗弄。12:00 左右从「大佛殿春日大社前」乘公交回 JR 奈良站。<br><a href="https://www.visitnara.jp/venues/A00489/" target="_blank">奈良公园与鹿注意事项</a>',
+        xhsKeyword: '奈良公园 小鹿 春日野园地 拍照', gmap: 'Kasugano-enchi+Nara'
+      },
+      {
+        name: 'JR 奈良站附近午餐', lat: 34.680920, lng: 135.818980,
+        type: 'food', time: '12:20', desc: '留约 45–50 分钟坐下吃饭；优先站旁不用排长队的店，13:10 前回到站台。',
+        budget: '¥1,200–3,000/人', xhsKeyword: 'JR奈良站 午餐 柿叶寿司',
+        dianpingKeyword: 'JR奈良站 午餐', gmap: 'JR+Nara+Station+restaurants'
+      },
+      {
+        name: 'JR 奈良站 → JR 宇治站', lat: 34.890460, lng: 135.800900,
+        type: 'transport', time: '13:15', desc: '搭 JR 奈良线都路快速，约 30–35 分钟直达宇治，不经过京都站。',
+        budget: '约 ¥510/人',
+        detail: '以当天时刻表为准；若错过快速列车，不必追车，把宇治表参道时间缩短 15 分钟即可。',
+        gmap: 'JR+Uji+Station'
+      },
+      {
+        name: 'JR 宇治站拱门建筑', lat: 34.890460, lng: 135.800900,
+        type: 'spot', time: '13:50', desc: '抵达后先用 10–15 分钟拍车站连续的混凝土拱门，不增加任何交通。',
+        detail: '建筑灵感来自平等院凤凰堂的节奏与回廊；拍完直接步行前往表参道。',
+        xhs: 'https://www.xiaohongshu.com/discovery/item/69a658a4000000002603c014?xsec_source=app_share&type=normal&xsec_token=CBiIX-7UdaMt7LUxu2gVwq89v6a1beVCefNo68c86E5vM=',
+        gmap: 'JR+Uji+Station'
+      },
+      {
+        name: '平等院表参道与抹茶休息', lat: 34.889640, lng: 135.806450,
+        type: 'food', time: '14:10', desc: '逛茶铺、吃抹茶甜品并坐下休息约 60 分钟；明确跳过平等院庭园和馆内参观。',
+        budget: '¥1,000–2,500/人',
+        detail: '不为单一网红店排长队；如果午餐吃得较晚，可以只点茶和甜品，把更多时间留给河岸。',
+        xhsKeyword: '宇治 平等院表参道 抹茶 甜品', dianpingKeyword: '宇治 表参道 抹茶', gmap: 'Byodoin+Omotesando+Uji'
+      },
+      {
+        name: '朝雾桥与宇治川东岸', lat: 34.889650, lng: 135.811520,
+        type: 'spot', time: '15:15', desc: '经橘桥、朝雾桥过河，在东岸慢走约 90 分钟，拍河水、枫叶、屋檐和安静街景。',
+        detail: '经过宇治神社外围即可，不安排寺社内部参观；这段是第二篇笔记的氛围核心。若累了，就在河边长椅休息，16:45 再走向京阪宇治站。<br><a href="https://www.kyoto-uji-kankou.or.jp/tourism-en.html" target="_blank">宇治市观光协会景点信息</a>',
+        xhs: 'https://www.xiaohongshu.com/discovery/item/6a1d96420000000008030fbf?xsec_source=app_share&type=normal&xsec_token=CBW6SPcwo22GYA21iVHbipOhKBHd_h10cV6pAwvLiqxCQ=',
+        gmap: 'Asagiri+Bridge+Uji'
+      },
+      {
+        name: '京阪宇治站 → 淀屋桥／酒店', lat: 34.894770, lng: 135.806850,
+        type: 'transport', time: '17:00', desc: '从东岸就近到京阪宇治站，经中书岛换乘前往淀屋桥；约 60 分钟，再步行回酒店。',
+        detail: '这样无需折返 JR 宇治站。若当天更想在大阪吃晚饭，可直接在淀屋桥或北新地一带下车后就餐。',
+        gmap: 'Keihan+Uji+Station'
       }
     ]
   },
@@ -537,7 +568,7 @@ function overviewContent() {
 </div>
 <div class="section-head">先说结论</div>
 <div class="pay-summary"><h4>酒店位置合适，不换酒店</h4>Zentis Osaka 位于堂岛浜，去大阪站、北新地和中之岛都方便；三个跨城日无需拖行李换住处。</div>
-<div class="pay-summary"><h4>神户是主日，奈良是轻量日</h4>神户保留美利坚公园晨光、美术馆建筑、须磨海岸和舞子日落；奈良只走公园主轴，不增加宇治或远郊。</div>
+<div class="pay-summary"><h4>神户是主日，奈良＋宇治做轻量组合</h4>神户保留美利坚公园晨光、美术馆建筑、须磨海岸和舞子日落；9/27 上午只走春日大社外围、若草山山麓和奈良公园，下午转往宇治，不进平等院庭园。</div>
 <div class="pay-summary"><h4>京都主动做减法</h4>笔记里的祐斋亭、贵船、三千院、琉璃光院分散在不同方向。本版保留南禅寺、无邻菴与鸭川；天气或体力不佳时也容易缩短。</div>
 <div class="section-head">行程概览</div>
 <div class="day-list">${DAYS.slice(1).map(d=>`<div class="card" onclick="go(${d.id})"><div class="name"><span class="dot" style="background:${d.color}"></span>${d.label} · ${d.title}</div><div class="desc">${d.date}</div></div>`).join('')}</div>
@@ -546,7 +577,7 @@ function overviewContent() {
 <div class="pay-summary"><h4>无邻菴 · 9/28 11:00 左右</h4>建议 8/29 起查看预约；这是京都日唯一固定时间。</div>
 <div class="pay-summary"><h4>童书之森 · 可不预约</h4>本次以建筑和户外青苹果为主；只有确定想入馆时，才在临近日期查看预约。</div>
 <div class="section-head">重要提醒</div>
-<div class="pay-summary"><h4>天气优先级</h4><span class="warn">神户港湾、奈良公园、鸭川都受雨风影响。</span> 出发前 72 小时按天气微调室内外停留；无邻菴预约确定后，不建议整日互换。</div>
+<div class="pay-summary"><h4>天气优先级</h4><span class="warn">神户港湾、奈良公园、若草山和宇治川都受雨风影响。</span> 出发前 72 小时按天气微调室内外停留；若草山湿滑时只在山麓看鹿，无邻菴预约确定后不建议整日互换。</div>
 <div class="pay-summary"><h4>已主动删除</h4>京都的贵船、三千院、祐斋亭、琉璃光院无法在一天内顺滑串联；大阪东洋陶瓷美术馆 2026/8/3 起维修闭馆至 2027 年春。</div>
 <div class="pay-summary"><h4>支付与导航</h4>备少量现金，交通以 ICOCA 为主；地图卡片可直接调用 Apple Maps、Google Maps 或高德。餐厅按钮用于当天就近搜索，不把网红店当路线锚点。</div>
 <div class="section-head">图例</div>
