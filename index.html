@@ -362,102 +362,108 @@ const DAYS = [
     ]
   },
   {
-    id: 3, label: '9/27 京都', date: '周日 · 上午大原苔庭，下午贵船溪谷，傍晚鸭川',
-    title: '洛北绿意：三千院、贵船与鸭川', color: '#4b7f52',
+    id: 3, label: '9/27 京都', date: '周日 · 三千院与禅林寺，下午贵船，傍晚鸭川',
+    title: '京都绿意：三千院、禅林寺、贵船与鸭川', color: '#4b7f52',
     locations: [
       {
         name: '酒店 → 京都／国际会馆站', lat: 35.063520, lng: 135.785190,
-        type: 'transport', time: '07:15', desc: '步行到 JR 大阪站，搭新快速到京都，再转地铁乌丸线至国际会馆；目标 08:35 左右抵达。',
+        type: 'transport', time: '06:45', desc: '步行到 JR 大阪站，搭新快速到京都，再转地铁乌丸线至国际会馆；目标 08:05 左右抵达。',
         detail: '不从京都站一路坐巴士去大原，先搭地铁到国际会馆可避开较慢的市区路段。早餐建议在大阪站买好，途中简单吃。',
         gmap: 'Kokusaikaikan+Station+Kyoto'
       },
       {
         name: '国际会馆站 → 大原', lat: 35.119620, lng: 135.828450,
-        type: 'transport', time: '08:45', desc: '从国际会馆站前搭京都巴士 19 系统到终点大原，约 20–30 分钟；下车后步行约 10 分钟。',
+        type: 'transport', time: '08:15', desc: '从国际会馆站前搭京都巴士 19 系统到终点大原，约 20–30 分钟；下车后步行约 10 分钟。',
         detail: '周日班次与道路情况可能变化，出发前一晚再核对京都巴士时刻；宁可提前到，也不要为了卡某一班车奔跑。<br><a href="https://kyoto.travel/en/getting-around/comfortable-access-to-ohara-including-yase/" target="_blank">京都官方大原交通建议</a>',
         gmap: 'Ohara+Bus+Terminal+Kyoto'
       },
       {
         name: '三千院苔庭', lat: 35.119960, lng: 135.834910,
-        type: 'spot', time: '09:30', desc: '集中看苔庭、杉树林、童地藏和庭院光影，停留约 75 分钟；贵船前不再加入其他寺院。',
+        type: 'spot', time: '09:00', desc: '开门后进入，集中看苔庭、杉树林、童地藏和庭院光影，停留约 70 分钟。',
         budget: '¥700/人',
-        detail: '3–10 月官方开放 09:00–17:00。9/27 是周日，尽量赶上午第一段，10:45 左右离开核心庭园。<br><a href="https://www.kyotobus.jp/spot/2026/03/sanzenin.html" target="_blank">三千院开放与交通信息</a>',
+        detail: '3–10 月官方开放 09:00–17:00。9/27 是周日，按第一批进入设计，10:10 左右离开核心庭园。<br><a href="https://www.kyotobus.jp/spot/2026/03/sanzenin.html" target="_blank">三千院开放与交通信息</a>',
         xhsKeyword: '京都 大原 三千院 苔庭 童地藏 拍照', gmap: 'Sanzen-in+Temple+Kyoto'
       },
       {
         name: '三千院参道午餐与吕川', lat: 35.118790, lng: 135.832540,
-        type: 'food', time: '10:45', desc: '沿参道和吕川慢慢下坡，在大原解决午餐；选择有空位的荞麦面、汤豆腐或定食，不为名店排长队。',
+        type: 'food', time: '10:10', desc: '沿参道和吕川下坡，提前吃简餐；选择有空位的荞麦面、汤豆腐或定食，不为名店排队。',
         budget: '¥1,200–3,000/人',
-        detail: '11:40 左右开始往大原公交站移动。本版不加入音无瀑布，避免错过前往贵船方向的衔接班次。',
+        detail: '10:50 左右开始往大原公交站移动。本版不加入音无瀑布，也不安排一小时正式午餐，以保护禅林寺和贵船时间。',
         xhsKeyword: '京都 大原 三千院 午餐 参道', dianpingKeyword: '京都 大原 三千院 午餐', gmap: 'Sanzenin+Approach+Ohara'
       },
       {
-        name: '大原 → 贵船口', lat: 35.105370, lng: 135.763220,
-        type: 'transport', time: '12:00', desc: '优先搭京都巴士 19 系统到国际会馆，再换 52 系统前往贵船口；衔接顺利约 50–60 分钟。',
-        detail: '若 19＋52 系统衔接不理想，改乘 17 系统到宝池，再换叡山电车鞍马线到贵船口。山区公交可能延误，前一晚按官方周日时刻表确定具体班次。',
-        gmap: 'Kibuneguchi+Station+Kyoto'
+        name: '大原 → 蹴上', lat: 35.009410, lng: 135.787130,
+        type: 'transport', time: '11:00', desc: '搭 19 系统回国际会馆，乘地铁乌丸线到乌丸御池，再换东西线至蹴上；整体预留约 75 分钟。',
+        detail: '优先使用地铁穿过市区，避开周日巴士拥堵。抵达蹴上后步行约 15 分钟前往禅林寺。',
+        gmap: 'Keage+Station+Kyoto'
       },
       {
-        name: '贵船口 → 贵船', lat: 35.121650, lng: 135.762930,
-        type: 'transport', time: '13:10', desc: '在叡电贵船口站前换京都巴士 33 系统，约 4 分钟抵达贵船；不要沿公路步行上山。',
-        detail: '京都巴士已公布 9/1–9/27 增开 33 系统，27 日正好是增班最后一天。<br><a href="https://www.kyotobus.jp/news/2026/08/kibune2026s3.html" target="_blank">贵船线增班公告</a>',
+        name: '禅林寺（永观堂）', lat: 35.014310, lng: 135.794430,
+        type: 'spot', time: '12:20', desc: '参观放生池、庭园、青枫和卧龙廊，停留约 75 分钟；不再顺带南禅寺水路阁。',
+        budget: '通常参观 ¥1,000/人',
+        detail: '通常 09:00–17:00，16:00 停止受付；本段安排在中午，避免贵船返程后赶不上。堂内文化财禁止摄影，境内禁用三脚架。<br><a href="https://www.eikando.or.jp/haikan.html" target="_blank">禅林寺官方参观信息</a>',
+        xhsKeyword: '京都 永观堂 禅林寺 青枫 放生池', gmap: 'Eikando+Temple+Kyoto'
+      },
+      {
+        name: '禅林寺 → 出町柳', lat: 35.029980, lng: 135.772850,
+        type: 'transport', time: '13:35', desc: '步行至“东天王町／南禅寺·永观堂道”一带，搭公交前往出町柳；预留约 35 分钟。',
+        detail: '14:10 左右抵达叡山电车出町柳站。若市区公交拥堵，可按地图改走蹴上地铁站，经三条京阪换京阪电车。',
+        gmap: 'Demachiyanagi+Station+Kyoto'
+      },
+      {
+        name: '出町柳 → 贵船', lat: 35.121650, lng: 135.762930,
+        type: 'transport', time: '14:20', desc: '乘叡山电车鞍马线到贵船口，再换京都巴士 33 系统到贵船；整体约 45–50 分钟。',
+        detail: '京都巴士已公布 9/1–9/27 增开 33 系统，27 日正好是增班最后一天；不要沿公路步行上山。<br><a href="https://www.kyotobus.jp/news/2026/08/kibune2026s3.html" target="_blank">贵船线增班公告</a>',
         gmap: 'Kibune+Bus+Stop+Kyoto'
       },
       {
         name: '贵船神社本宫', lat: 35.121710, lng: 135.762940,
-        type: 'spot', time: '13:20', desc: '拍灯笼石阶、青枫与本宫，体验水占卜；停留约 60 分钟。',
-        detail: '9 月本宫参拜和水占卜开放至 20:00，御守与御朱印授与所至 17:00；全年无休、参拜免费。<br><a href="https://kifunejinja.jp/info/" target="_blank">贵船神社官方参拜信息</a>',
+        type: 'spot', time: '15:10', desc: '拍灯笼石阶、青枫与本宫，体验水占卜；集中停留约 50 分钟。',
+        detail: '9 月本宫参拜和水占卜开放至 20:00，御守与御朱印授与所至 17:00；先参拜、再按剩余时间决定河岸拍摄。<br><a href="https://kifunejinja.jp/info/" target="_blank">贵船神社官方参拜信息</a>',
         xhsKeyword: '京都 贵船神社 灯笼石阶 水占卜 拍照', gmap: 'Kifune+Shrine+Kyoto'
       },
       {
-        name: '贵船川沿岸散步', lat: 35.124850, lng: 135.761900,
-        type: 'spot', time: '14:20', desc: '沿贵船川向结社、奥宫方向散步，拍溪流、杉林和川床；15:10 左右折返，不强求走完整段。',
-        detail: '山路湿滑或体力不足时，只走到结社附近即可。9 月下旬仍以浓绿色为主，不期待红叶。',
-        xhsKeyword: '京都 贵船川 贵船神社 奥宫 青枫', gmap: 'Kifune+River+Kyoto'
+        name: '贵船川短程散步', lat: 35.124850, lng: 135.761900,
+        type: 'spot', time: '16:00', desc: '在本宫附近沿贵船川短程拍摄溪流、杉林和川床；16:20 左右返回公交站。',
+        detail: '不走到奥宫。若前段延误，直接取消本段，只保留贵船神社本宫；先按返程公交时刻决定折返点。',
+        xhsKeyword: '京都 贵船川 贵船神社 青枫', gmap: 'Kifune+River+Kyoto'
       },
       {
         name: '贵船 → 出町柳', lat: 35.029980, lng: 135.772850,
-        type: 'transport', time: '15:15', desc: '搭 33 系统返回贵船口，再乘叡山电车直达出町柳；整体预留约 45–50 分钟。',
-        detail: '33 系统班次有限，先按返程巴士时刻决定沿河散步的折返点；不要错过计划班次后再临时步行下山。',
+        type: 'transport', time: '16:25', desc: '搭 33 系统返回贵船口，再乘叡山电车直达出町柳；整体预留约 45–50 分钟。',
+        detail: '返程是当天第二个硬节点。若错过计划班次，取消鸭川三角洲停留，直接前往祇园四条。',
         gmap: 'Demachiyanagi+Station+Kyoto'
       },
       {
         name: '鸭川三角洲', lat: 35.030870, lng: 135.771130,
-        type: 'spot', time: '16:05', desc: '到达出町柳后短停约 25 分钟，看高野川与贺茂川交汇、跳石和开阔河面。',
-        detail: '16:30 左右回到京阪出町柳站；若贵船返程延误，可以直接进站，不影响傍晚四条段。',
+        type: 'spot', time: '17:20', desc: '到达出町柳后短停约 30 分钟，看高野川与贺茂川交汇，并在河岸看 17:47 左右的日落。',
+        detail: '若贵船返程延误，停留压缩至 10 分钟或直接进站；日落后再前往河原町购物。',
         xhsKeyword: '京都 鸭川三角洲 出町柳 跳石', gmap: 'Kamo+River+Delta+Kyoto'
       },
       {
         name: '出町柳 → 祇园四条', lat: 35.003720, lng: 135.772140,
-        type: 'transport', time: '16:35', desc: '搭京阪本线约 7 分钟到祇园四条；出站过四条大桥即可进入河原町购物区。',
+        type: 'transport', time: '18:00', desc: '搭京阪本线约 7 分钟到祇园四条；出站过四条大桥即可进入河原町购物区。',
         gmap: 'Gion-Shijo+Station+Kyoto'
       },
       {
-        name: '河原町短暂购物', lat: 35.005180, lng: 135.767360,
-        type: 'spot', time: '16:50', desc: '只选高岛屋 S.C.／T8、京都 BAL或寺町其中一处，控制在约 35 分钟。',
-        detail: '贵船版以自然景观为主，购物不再跨店追货；17:25 左右开始往四条大桥移动。',
+        name: '河原町购物', lat: 35.005180, lng: 135.767360,
+        type: 'spot', time: '18:15', desc: '只选高岛屋 S.C.／T8、京都 BAL或寺町其中一处，控制在约 60 分钟。',
+        detail: '购物移到日落后，不再跨店追货；如山区返程明显延误，缩短为 30 分钟。',
         xhsKeyword: '京都 河原町 购物 京都BAL 高岛屋 T8 寺町', gmap: 'Kyoto+Kawaramachi+Shopping'
       },
       {
-        name: '鸭川四条—三条段', lat: 35.006840, lng: 135.771420,
-        type: 'spot', time: '17:25', desc: '从四条大桥沿河岸向三条慢走，17:47 左右看日落，再留一段蓝调时间。',
-        detail: '若贵船返程延误，直接取消购物，优先保留鸭川；下雨时改走有遮挡的先斗町、木屋町，不在湿滑河岸久留。',
+        name: '鸭川四条—三条段（可选）', lat: 35.006840, lng: 135.771420,
+        type: 'spot', time: '19:15', desc: '若体力充足，从四条大桥沿河向三条短走约 20 分钟，感受夜间城市河景。',
+        detail: '日落已在鸭川三角洲完成；本段可以随时取消。下雨时改走有遮挡的先斗町、木屋町。',
         xhs: 'https://www.xiaohongshu.com/explore/69faad2d000000003703479d?xsec_source=app_share&type=normal&xsec_token=CB7tE6gDK5jw38b5vtL2XPDcG-jjcDS38CfSKEOnvUct8=',
         gmap: 'Kamo+River+Shijo+Kyoto'
       },
       {
         name: '河原町晚餐 → 大阪梅田', lat: 35.003720, lng: 135.768950,
-        type: 'food', time: '18:15', desc: '在河原町、木屋町或先斗町晚餐；之后从阪急京都河原町站直达大阪梅田。',
+        type: 'food', time: '19:40', desc: '在河原町、木屋町或先斗町晚餐；之后从阪急京都河原町站直达大阪梅田。',
         budget: '¥2,000–5,000/人',
         detail: '返程不用再绕京都站。抵达大阪梅田后步行或搭一站地铁回酒店。',
         xhsKeyword: '京都 河原町 木屋町 晚餐', dianpingKeyword: '京都 河原町 晚餐', gmap: 'Hankyu+Kyoto-Kawaramachi+Station'
-      },
-      {
-        name: '禅林寺（永观堂）替换方案', lat: 35.014310, lng: 135.794430,
-        type: 'spot', time: '—', desc: '山区下雨、贵船公交拥挤或想增加购物时间时，用永观堂替换“贵船口—贵船神社—贵船川”整段。',
-        budget: '通常参观 ¥1,000/人',
-        detail: '参考安排：11:45 左右从大原出发，经宝池换市巴士 5 系统，12:45 左右到「南禅寺・永观堂道」；13:00–14:20 参观永观堂，之后可顺路看南禅寺水路阁，15:40 左右开始河原町购物。永观堂通常 09:00–17:00，16:00 停止受付；9 月下旬以青枫、池塘和回廊景观为主。<br><a href="https://www.eikando.or.jp/haikan.html" target="_blank">永观堂官方参观信息</a>',
-        xhsKeyword: '京都 永观堂 禅林寺 青枫 放生池', gmap: 'Eikando+Temple+Kyoto'
       }
     ]
   },
@@ -607,17 +613,17 @@ function overviewContent() {
 </div>
 <div class="section-head">先说结论</div>
 <div class="pay-summary"><h4>酒店位置合适，不换酒店</h4>Zentis Osaka 位于堂岛浜，去大阪站、北新地和中之岛都方便；三个跨城日无需拖行李换住处。</div>
-<div class="pay-summary"><h4>9/27 京都，9/28 奈良＋宇治</h4>京都主线调整为三千院、贵船神社与鸭川；禅林寺（永观堂）保留为山区天气或公交状况不佳时的替换方案。</div>
-<div class="pay-summary"><h4>京都日以洛北自然为主</h4>三千院承担苔庭与杉林，贵船补充溪流、灯笼石阶和山谷氛围；傍晚返回河原町短暂购物，再走鸭川四条至三条段。</div>
+<div class="pay-summary"><h4>9/27 京都，9/28 奈良＋宇治</h4>京都日同时安排三千院、禅林寺、贵船神社与鸭川；奈良＋宇治继续放在周一，保持山麓看鹿和河岸散步的轻量节奏。</div>
+<div class="pay-summary"><h4>京都日提早出发、分段控时</h4>三千院负责苔庭与杉林，禅林寺补充池塘和回廊，贵船保留溪流与灯笼石阶；日落放在鸭川三角洲，购物移到日落后。</div>
 <div class="section-head">行程概览</div>
 <div class="day-list">${DAYS.slice(1).map(d=>`<div class="card" onclick="go(${d.id})"><div class="name"><span class="dot" style="background:${d.color}"></span>${d.label} · ${d.title}</div><div class="desc">${d.date}</div></div>`).join('')}</div>
 <div class="section-head">建议提前处理</div>
 <div class="pay-summary"><h4>神户日唯一硬截止 · 14:35</h4>Cafe & Bar Anthem 最晚 14:35 结账离开，才能为须磨留出约 70 分钟，并在 16:45 左右抵达舞子等待日落。</div>
-<div class="pay-summary"><h4>贵船 · 先锁定返程班次</h4>前一晚确认大原—贵船口、贵船口—贵船的周日班次；9/27 是贵船线 33 系统增班最后一天，先记住返程车再决定沿河走多远。</div>
+<div class="pay-summary"><h4>京都日两个硬节点</h4>禅林寺 16:00 停止受付，因此固定中午参观；贵船则先锁定 16:25 左右的返程公交，再决定河岸能走多远。9/27 是 33 系统增班最后一天。</div>
 <div class="pay-summary"><h4>童书之森 · 可不预约</h4>本次以建筑和户外青苹果为主；只有确定想入馆时，才在临近日期查看预约。</div>
 <div class="section-head">重要提醒</div>
-<div class="pay-summary"><h4>天气优先级</h4><span class="warn">神户港湾、大原与贵船山路、鸭川、奈良公园、若草山和宇治川都受雨风影响。</span> 出发前 72 小时按天气微调；贵船遇持续降雨或公交严重拥挤时，直接切换禅林寺备选，若草山湿滑时只在山麓看鹿。</div>
-<div class="pay-summary"><h4>京都日的取舍</h4>不安排祐斋亭、琉璃光院和音无瀑布；禅林寺只作为贵船替换项，不与主线叠加。大阪东洋陶瓷美术馆 2026/8/3 起维修闭馆至 2027 年春。</div>
+<div class="pay-summary"><h4>天气优先级</h4><span class="warn">神户港湾、大原与贵船山路、鸭川、奈良公园、若草山和宇治川都受雨风影响。</span> 出发前 72 小时按天气微调；贵船遇持续降雨或公交严重拥挤时，取消贵船、保留禅林寺与市区段，若草山湿滑时只在山麓看鹿。</div>
+<div class="pay-summary"><h4>京都日的取舍</h4>不安排祐斋亭、琉璃光院、音无瀑布、南禅寺水路阁和贵船奥宫；若前段延误，依次取消贵船川散步、夜间鸭川、缩短购物，三千院、禅林寺和贵船本宫优先保留。</div>
 <div class="pay-summary"><h4>支付与导航</h4>备少量现金，交通以 ICOCA 为主；地图卡片可直接调用 Apple Maps、Google Maps 或高德。餐厅按钮用于当天就近搜索，不把网红店当路线锚点。</div>
 <div class="section-head">图例</div>
 <div class="legend">
