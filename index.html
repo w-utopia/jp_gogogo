@@ -568,12 +568,12 @@ const DAYS = [
   },
   {
     id: 5, label: '9/29 返程', date: '周二 · 17:00 关西机场 T1 起飞',
-    title: '中之岛—北滨建筑 Citywalk，13:00 前离开梅田', color: '#6b6f93',
+    title: '中之岛＋中崎町，12:00 冲 WAD', color: '#6b6f93',
     locations: [
       {
         name: 'Zentis Osaka 退房寄存', lat: 34.695860, lng: 135.496060,
-        type: 'hotel', time: '08:15', desc: '退房后寄存大件行李，只带随身包；从酒店沿堂岛川步行进入中之岛。',
-        detail: '酒店地址：大阪府大阪市北区堂島浜1-4-26。返程日只走中之岛—北滨一条线，不绕去第二篇笔记中的中崎町：中崎町店铺多在 11:00 后营业，加入后会压缩机场缓冲。<br><a href="https://xhslink.cn/o/2iggyY3go3l" target="_blank">中之岛 Citywalk 笔记</a> · <a href="https://xhslink.cn/o/5DJErS93bvq" target="_blank">中崎町街拍笔记（本日不加入）</a>',
+        type: 'hotel', time: '08:10', desc: '退房后寄存大件行李，只带随身包；从酒店沿堂岛川步行进入中之岛。',
+        detail: '酒店地址：大阪府大阪市北区堂島浜1-4-26。上午会同时走中之岛和中崎町，但必须按时间离开，确保 12:00 到 WAD。<br><a href="https://xhslink.cn/o/2iggyY3go3l" target="_blank">中之岛 Citywalk 笔记</a> · <a href="https://xhslink.cn/o/5DJErS93bvq" target="_blank">中崎町街拍笔记</a>',
         gmap: 'Zentis+Osaka'
       },
       {
@@ -584,52 +584,58 @@ const DAYS = [
       },
       {
         name: '大阪府立中之岛图书馆', lat: 34.694400, lng: 135.505470,
-        type: 'spot', time: '09:00', desc: '1904 年新古典主义建筑；开门后看中央大厅、楼梯和立柱，停留约 30 分钟。',
+        type: 'spot', time: '09:00', desc: '1904 年新古典主义建筑；开门后看中央大厅、楼梯和立柱，停留约 25 分钟。',
         detail: '地址：大阪府大阪市北区中之島1-2-10。9/29 为周二，官方开放 09:00–20:00。笔记里的 Smørrebrød Kitchen 已于 2025 年底迁出，不再把图书馆内用餐写进行程。<br><a href="https://www.library.pref.osaka.jp/site/nakato/date-nakato.html" target="_blank">图书馆官方开放日历</a>',
         xhs: 'https://xhslink.cn/o/2iggyY3go3l',
         gmap: 'Osaka+Prefectural+Nakanoshima+Library'
       },
       {
-        name: '大阪市中央公会堂', lat: 34.693790, lng: 135.506320,
-        type: 'spot', time: '09:35', desc: '拍红砖立面、拱窗与河岸广场；以外观为主，不等待收费导览。',
-        detail: '地址：大阪府大阪市北区中之島1-1-27。9/29 不是第 4 个周二，通常开放；馆内多为活动空间，自由参观范围有限。<br><a href="https://osaka-chuokokaido.com/access" target="_blank">中央公会堂官方信息</a>',
+        name: '中央公会堂＋童书之森', lat: 34.693360, lng: 135.506070,
+        type: 'spot', time: '09:30', desc: '依次拍中央公会堂红砖外观、安藤忠雄设计的童书之森和户外青苹果，合计约 25 分钟。',
+        detail: '中央公会堂：大阪府大阪市北区中之島1-1-27；童书之森：中之島1-1-28。本次不等收费导览，也不排队入馆，09:55 准时向北滨站移动。<br><a href="https://osaka-chuokokaido.com/access" target="_blank">中央公会堂官方信息</a> · <a href="https://kodomohonnomori.osaka/" target="_blank">童书之森官方信息</a>',
         gmap: 'Osaka+City+Central+Public+Hall'
       },
       {
-        name: '童书之森 中之岛与青苹果', lat: 34.692880, lng: 135.505890,
-        type: 'spot', time: '10:00', desc: '看安藤忠雄建筑、临河立面和户外青苹果；以外部拍摄为主，停留约 25 分钟。',
-        detail: '地址：大阪府大阪市北区中之島1-1-28；开放 09:30–17:00。若想入馆，预约从到访日前 14 天 10:00 开放；没有预约就不排队，继续向北滨走。<br><a href="https://kodomohonnomori.osaka/" target="_blank">童书之森官方信息</a>',
-        gmap: 'Nakanoshima+Children+Book+Forest'
+        name: '北滨 → 中崎町', lat: 34.707650, lng: 135.505940,
+        type: 'transport', time: '09:55', desc: '从北滨搭堺筋线到天神桥筋六丁目，换谷町线一站到中崎町；整体预留约 25 分钟。',
+        detail: '不再继续走中之岛公园东段，也不安排北滨咖啡，以换取中崎町约 1 小时的街区时间。',
+        gmap: 'Nakazakicho+Station'
       },
       {
-        name: '中之岛公园 → 北滨河岸', lat: 34.692120, lng: 135.509550,
-        type: 'spot', time: '10:30', desc: '沿中之岛公园向东，经蔷薇园和难波桥过河；这一段集中拍河景与复古建筑。',
-        detail: '大阪市立东洋陶瓷美术馆正处于长期维修闭馆期，只经过外观，不安排入馆。原笔记中的 Embankment Coffee 周二通常 12:00 才开，也不作为上午主线。',
-        xhsKeyword: '大阪 中之岛公园 北滨 河岸 拍照', gmap: 'Nakanoshima+Park+Rose+Garden'
+        name: '中崎町街区逛街', lat: 34.707880, lng: 135.503250,
+        type: 'spot', time: '10:20', desc: '先走中崎西一带的旧民居、小巷和店铺外观；11:00 后集中逛已经开门的古着、杂货与咖啡小店。',
+        detail: '完整停留约 60 分钟。多数店铺 11:00 前尚未营业，所以前 40 分钟以街拍为主，最后约 20 分钟购物；11:20 是硬性离开时间。<br><a href="https://xhslink.cn/o/5DJErS93bvq" target="_blank">中崎町街拍笔记</a>',
+        xhs: 'https://xhslink.cn/o/5DJErS93bvq', gmap: 'Nakazakicho+Osaka'
       },
       {
-        name: 'Spectacle Kitahama 早午餐', lat: 34.690830, lng: 135.508650,
-        type: 'food', time: '11:00', desc: '在深蓝色独栋咖啡馆吃简餐或咖啡＋可露丽；11:35 前结账离开，不排队等窗边位。',
+        name: '中崎町 → 心斋桥', lat: 34.675060, lng: 135.500410,
+        type: 'transport', time: '11:20', desc: '谷町线到东梅田，步行换乘御堂筋线到心斋桥；预留约 30 分钟，目标 11:50 到 WAD 门口。',
+        detail: 'WAD 不接受预约，必须为站内换乘和排队留时间；即使中崎町还有店想逛，也不要晚于 11:20 离开。',
+        gmap: 'Shinsaibashi+Station'
+      },
+      {
+        name: 'wad omotenashi cafe', lat: 34.677800, lng: 135.498530,
+        type: 'food', time: '11:50', desc: '提前到门口等候，12:00 开门后第一批入店；把这里作为当天午餐与日本茶休息。',
         budget: '约 ¥1,000–2,500/人',
-        detail: '地址：大阪府大阪市中央区北浜1-2-2；通常 11:00 开门。返程日上午只留约 35 分钟，若开店延迟或排队，改为外观拍照并去便利店买轻食。',
-        xhsKeyword: 'Spectacle Kitahama 北浜 咖啡 可露丽', dianpingKeyword: 'Spectacle Kitahama', gmap: 'Spectacle+Kitahama'
+        detail: '地址：大阪府大阪市中央区南船場4-9-3 東進ビル2F。周二通常 12:00–19:00，L.O. 18:30；不接受预约、仅收现金。12:45 必须结账离开，否则会压缩国际航班值机时间。<br><a href="https://wad-cafe.com/" target="_blank">WAD 官方网站</a>',
+        xhsKeyword: 'wad omotenashi cafe 大阪 日本茶 刨冰', dianpingKeyword: 'wad omotenashi cafe', gmap: 'wad+omotenashi+cafe+Osaka'
       },
       {
-        name: '北滨 → 酒店取行李', lat: 34.695860, lng: 135.496060,
-        type: 'transport', time: '11:40', desc: '从北滨步行或搭京阪一站至淀屋桥，再回酒店；目标 12:05 前取到行李。',
-        detail: '步行全程约 20–25 分钟。若上午任何一站延误超过 15 分钟，直接在 11:30 结束拍摄，不再坐下吃早午餐。',
+        name: '心斋桥 → 酒店取行李', lat: 34.695860, lng: 135.496060,
+        type: 'transport', time: '12:45', desc: '从心斋桥搭御堂筋线至梅田，或四桥站搭四桥线至西梅田，再回酒店取行李；目标 13:15 前完成。',
+        detail: '优先按实时导航选择换乘更少的路线。若 WAD 排队超过 10 分钟，仍要在 12:45 离店；不要再追加心斋桥购物。',
         gmap: 'Zentis+Osaka'
       },
       {
         name: 'Herbis Osaka → 关西机场 T1', lat: 34.699130, lng: 135.495210,
-        type: 'transport', time: '12:40', desc: '取行李后步行约 10 分钟到 Herbis Osaka，预留买票和候车时间；以 13:00 前后的机场巴士为目标。',
+        type: 'transport', time: '13:20', desc: '取行李后步行约 10 分钟到 Herbis Osaka；搭最早可乘的机场巴士，不再等待指定班次。',
         budget: '¥1,800/人',
-        detail: '机场巴士官方标称约 60 分钟；出发前再次核对 9/29 当天班次，至少预留一班余量。若巴士停运或等待明显过久，改走 JR 大阪站搭 HARUKA。',
+        detail: '目标乘 13:30–13:45 左右班次，约 14:40–14:55 到 T1。若下一班巴士等待超过 15 分钟，立即改走 JR 大阪站搭 HARUKA，不再继续候车。',
         gmap: 'Herbis+Osaka+Airport+Bus'
       },
       {
         name: '关西国际机场 T1', lat: 34.434160, lng: 135.244000,
-        type: 'transport', time: '14:15', desc: '目标 14:15–14:30 抵达，办理值机、托运与出境；17:00 起飞前保留约 2.5 小时。',
+        type: 'transport', time: '14:45', desc: '目标 14:40–14:55 抵达，立即办理值机、托运与出境；17:00 起飞前约有 2 小时。',
         gmap: 'Kansai+International+Airport+Terminal+1'
       }
     ]
@@ -660,7 +666,7 @@ function overviewContent() {
 <div class="pay-summary"><h4>神户日唯一硬截止 · 14:35</h4>Cafe & Bar Anthem 最晚 14:35 结账离开，才能为须磨留出约 70 分钟，并在 16:45 左右抵达舞子等待日落。</div>
 <div class="pay-summary"><h4>京都日两个硬节点</h4>禅林寺 16:00 停止受付，因此固定中午参观；贵船则先锁定 16:25 左右的返程公交，再决定河岸能走多远。9/27 是 33 系统增班最后一天。</div>
 <div class="pay-summary"><h4>童书之森 · 可不预约</h4>本次以建筑和户外青苹果为主；只有确定想入馆时，才在临近日期查看预约。</div>
-<div class="pay-summary"><h4>返程日上午 · 11:40 开始回酒店</h4>中之岛—北滨只走单向路线；中崎町不与返程日硬拼。原笔记中的图书馆餐厅已搬迁、Embankment Coffee 周二中午才开，因此改在 11:00 到 Spectacle Kitahama 短停。</div>
+<div class="pay-summary"><h4>返程日上午 · WAD 12:00 开门冲</h4>中之岛压缩为建筑重点，中崎町安排 10:20–11:20；11:50 到 WAD 门口等第一批，12:45 必须离店。机场目标抵达时间调整为约 14:45。</div>
 <div class="section-head">重要提醒</div>
 <div class="pay-summary"><h4>天气优先级</h4><span class="warn">神户港湾、大原与贵船山路、鸭川、奈良公园、若草山和宇治川都受雨风影响。</span> 出发前 72 小时按天气微调；贵船遇持续降雨或公交严重拥挤时，取消贵船、保留禅林寺与市区段，若草山湿滑时只在山麓看鹿。</div>
 <div class="pay-summary"><h4>京都日的取舍</h4>不安排祐斋亭、琉璃光院、音无瀑布、南禅寺水路阁和贵船奥宫；若前段延误，依次取消贵船川散步、夜间鸭川、缩短购物，三千院、禅林寺和贵船本宫优先保留。</div>
