@@ -381,6 +381,60 @@ const DAYS = [
         budget: '¥1,500–5,000/人',
         xhsKeyword: '神户 舞子 三宫 晚餐', dianpingKeyword: '神户 三宫 晚餐', gmap: 'JR+Maiko+Station'
       }
+    ],
+    rainNote: '持续阴雨或强风时启用：取消美利坚公园户外拍摄、兵库县立美术馆外观、须磨海岸与舞子日落。路线集中在三宫—海岸通，优先地铁与地下通道；四个主要室内点按开门时间由东向西串联。',
+    rainPlan: [
+      {
+        name: 'JR 大阪站 → JR 三之宫站', lat: 34.694730, lng: 135.194970,
+        type: 'transport', time: '08:50', desc: '搭 JR 神户线新快速到三之宫；雨大时从车站地下通道向新神户方向移动。',
+        detail: '车程约 25 分钟。到站后可搭神户市营地铁一站到新神户，再步行约 10 分钟前往 Freundlieb，减少露天路段。',
+        gmap: 'JR+Sannomiya+Station+Kobe'
+      },
+      {
+        name: 'FREUNDLIEB 本店', lat: 34.704360, lng: 135.196760,
+        type: 'food', time: '10:00', desc: '教堂改造的面包店与咖啡馆；看建筑、买面包，预留约 65 分钟。',
+        budget: '约 ¥1,000–2,500/人',
+        detail: '地址：神户市中央区生田町 4-6-15。9/26 为周六；SHOP 10:00–18:00，CAFE 10:00–16:30（L.O. 16:00），周三休。若早餐已经吃饱，以建筑和面包外带为主。<br><a href="https://h-freundlieb.com/" target="_blank">FREUNDLIEB 官方网站</a>',
+        xhsKeyword: '神户 FREUNDLIEB 教堂 咖啡', dianpingKeyword: '神户 Freundlieb 本店', gmap: 'Freundlieb+Kobe'
+      },
+      {
+        name: '新神户／三宫 → 海岸通', lat: 34.694730, lng: 135.194970,
+        type: 'transport', time: '11:05', desc: '回新神户站搭地铁一站到三宫，再沿地下街与旧居留地方向前往 VAGUE；目标 11:55 到门口。',
+        detail: '不建议在雨里全程步行。出站后仍有约 8–10 分钟室外路段，带折叠伞并穿防滑鞋。',
+        gmap: 'Sannomiya+Station+to+VAGUE+KOBE'
+      },
+      {
+        name: 'VAGUE KOBE', lat: 34.687430, lng: 135.193890,
+        type: 'spot', time: '12:00', desc: '开门第一批进入，在旧建筑里看空间设计与当期展览，约 40 分钟。',
+        detail: '地址：神户市中央区海岸通 9-2 Chartered Building 4F。周五至周一 12:00–18:00。9/26 正在展出「返歌－石井直人－」（9/4–9/28），免费入场；出发前再查看临时调整。<br><a href="https://shop-vague.com/pages/access" target="_blank">VAGUE 官方交通与营业信息</a>',
+        xhsKeyword: 'VAGUE KOBE 神户 展览 建筑', gmap: 'VAGUE+KOBE'
+      },
+      {
+        name: 'Cafe & Bar Anthem 午餐', lat: 34.686710, lng: 135.189060,
+        type: 'food', time: '12:50', desc: '从 VAGUE 向西步行约 7–8 分钟，坐下吃午餐；若仍想吃纱布芝士蛋糕，可一起点。',
+        budget: '约 ¥1,500–3,000/人 · 建议备现金',
+        detail: '地址：神户市中央区海岸通 2-3-7 4F。午餐与咖啡不接受预约；雨天可能排队，最多等 15 分钟，超过就改在元町就近吃。<br><a href="https://www.anthem-kottabos.com/anthem-about" target="_blank">Anthem 官方信息</a>',
+        xhsKeyword: '神户 cafe bar anthem 午餐 纱布芝士蛋糕', dianpingKeyword: '神户 Cafe Bar Anthem', gmap: 'cafe+and+bar+anthem+Kobe'
+      },
+      {
+        name: 'THE BOOK END', lat: 34.686200, lng: 135.186600,
+        type: 'spot', time: '14:00', desc: '逛摄影与艺术书店，也看海岸ビルヂング本身；预留约 40 分钟。',
+        detail: '地址：神户市中央区海岸通 3-1-5 海岸ビルヂング 302。营业 11:00–18:00，周二、周三休；免费入场。9/26 正在展出篠田优「Fragments of the place 2017–2019」（9/3–9/28）。<br><a href="https://www.the-book-end.com/" target="_blank">THE BOOK END 官方网站</a>',
+        xhsKeyword: 'THE BOOK END 神户 摄影书店 海岸ビルヂング', gmap: 'THE+BOOK+END+Kobe'
+      },
+      {
+        name: '神户海洋博物馆', lat: 34.682620, lng: 135.188270,
+        type: 'spot', time: '14:50', desc: '室内看港口、船舶与海事展示；不是水族馆，也不涉及动物表演，预留约 90 分钟。',
+        budget: '常设展成人 ¥900/人',
+        detail: '地址：神户市中央区波止场町 2-2。开放 10:00–18:00（17:30 停止入馆）；9/26 周六正常开放。常设票含 Kawasaki Good Times World；当期另有收费特别展，按兴趣现场决定是否追加。<br><a href="https://kobe-maritime-museum.com/price/" target="_blank">神户海洋博物馆官方信息</a>',
+        xhsKeyword: '神户海洋博物馆 港口 船舶 建筑', gmap: 'Kobe+Maritime+Museum'
+      },
+      {
+        name: 'Harborland／元町室内收尾', lat: 34.679640, lng: 135.181720,
+        type: 'spot', time: '16:30', desc: '按雨势选择 umie／MOSAIC 室内逛街，或直接回元町、三宫吃晚餐后返大阪。',
+        detail: '雨势减弱时可在屋檐下短拍港塔与白色网架；持续大雨就不绕户外，搭地铁或 JR 返回。',
+        xhsKeyword: '神户 Harborland umie 雨天', gmap: 'Kobe+Harborland+umie'
+      }
     ]
   },
   {
@@ -664,6 +718,7 @@ function overviewContent() {
 <div class="section-head">建议提前处理</div>
 <div class="pay-summary"><h4>首晚购物硬截止 · 19:20</h4>agete 与 Aesop 集中在阪急梅田本店，通常 20:00 关门；若 19:20 仍未离开酒店，就跳过两店，直接去通常 21:00 关门的 Onitsuka Tiger。堂吉诃德 24 小时营业，可最后处理七星烟并询问山崎12年库存。</div>
 <div class="pay-summary"><h4>神户日唯一硬截止 · 14:35</h4>Cafe & Bar Anthem 最晚 14:35 结账离开，才能为须磨留出约 70 分钟，并在 16:45 左右抵达舞子等待日落。</div>
+<div class="pay-summary"><h4>神户雨天 Plan B</h4>持续阴雨或强风时，取消须磨海岸与舞子日落，改走 FREUNDLIEB → VAGUE KOBE → Anthem → THE BOOK END → 神户海洋博物馆；全部集中在三宫与海岸通。</div>
 <div class="pay-summary"><h4>京都日两个硬节点</h4>禅林寺 16:00 停止受付，因此固定中午参观；贵船则先锁定 16:25 左右的返程公交，再决定河岸能走多远。9/27 是 33 系统增班最后一天。</div>
 <div class="pay-summary"><h4>童书之森 · 可不预约</h4>本次以建筑和户外青苹果为主；只有确定想入馆时，才在临近日期查看预约。</div>
 <div class="pay-summary"><h4>返程日上午 · WAD 12:00 开门冲</h4>中之岛压缩为建筑重点，中崎町安排 10:20–11:20；11:50 到 WAD 门口等第一批，12:45 必须离店。机场目标抵达时间调整为约 14:45。</div>
@@ -791,7 +846,7 @@ function dpAppUrl(loc) { return `dianping://searchshoplist?keyword=${encodeURICo
 function dpWebUrl(loc) { return `https://m.dianping.com/searchshop?keyword=${encodeURIComponent(dpKeyword(loc))}`; }
 
 window._extLocs = {};
-DAYS.forEach(d => d.locations.forEach(l => { window._extLocs[`${d.id}::${l.name}`] = l; }));
+DAYS.forEach(d => [...d.locations, ...(d.rainPlan||[])].forEach(l => { window._extLocs[`${d.id}::${l.name}`] = l; }));
 window._xhsLocs = window._extLocs;
 
 function openExt(key, kind) {
@@ -837,6 +892,11 @@ function renderDay(idx) {
   const alt = d.locations.filter(l=>l.time==='—');
   let h = `<div class="day-head"><h2>${d.title}</h2><p>${d.date}</p></div>`;
   if(main.length) { h += '<div class="section-head">行程</div><div class="timeline">'; main.forEach(l => h += locCard(l, idx)); h += '</div>'; }
+  if(d.rainPlan?.length) {
+    h += `<div class="section-head">🌧️ 阴雨天 Plan B</div>${d.rainNote?`<div class="pay-summary"><h4>什么时候切换</h4>${d.rainNote}</div>`:''}<div class="timeline">`;
+    d.rainPlan.forEach(l => h += locCard(l, idx));
+    h += '</div>';
+  }
   if(alt.length) { h += '<div class="section-head">备选</div><div class="timeline">'; alt.forEach(l => h += locCard(l, idx)); h += '</div>'; }
   return h;
 }
