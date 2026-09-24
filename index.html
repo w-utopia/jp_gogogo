@@ -556,8 +556,8 @@ const DAYS = [
     ]
   },
   {
-    id: 4, label: '9/28 奈良＋宇治', date: '周一 · 上午山麓看鹿，下午河岸散步',
-    title: '鹿与河岸：奈良半日＋宇治半日', color: '#8a7d3b',
+    id: 4, label: '9/28 奈良＋宇治', date: '周一 · 上午山麓看鹿，下午宇治，晚上心斋桥',
+    title: '鹿与河岸：奈良、宇治与心斋桥夜晚', color: '#8a7d3b',
     locations: [
       {
         name: 'JR 大阪站 → JR 奈良站', lat: 34.680920, lng: 135.818980,
@@ -625,10 +625,41 @@ const DAYS = [
         gmap: 'Asagiri+Bridge+Uji'
       },
       {
-        name: '京阪宇治站 → 淀屋桥／酒店', lat: 34.894770, lng: 135.806850,
-        type: 'transport', time: '17:00', desc: '从东岸就近到京阪宇治站，经中书岛换乘前往淀屋桥；约 60 分钟，再步行回酒店。',
-        detail: '这样无需折返 JR 宇治站。若当天更想在大阪吃晚饭，可直接在淀屋桥或北新地一带下车后就餐。',
+        name: '京阪宇治站 → 心斋桥', lat: 34.894770, lng: 135.806850,
+        type: 'transport', time: '17:00', desc: '从东岸就近到京阪宇治站，经中书岛到京桥，再换大阪地铁长堀鹤见绿地线至心斋桥。',
+        detail: '整体预留约 75 分钟，目标 18:15 左右抵达。无需先回酒店；当天只带轻便随身包，避免拖着购物袋和行李移动。',
         gmap: 'Keihan+Uji+Station'
+      },
+      {
+        name: 'HMV record shop 心斋桥', lat: 34.675070, lng: 135.499060,
+        type: 'spot', time: '18:20', desc: '先逛黑胶、二手唱片和音乐周边，预留约 45–50 分钟。',
+        detail: '<span class="warn">官方营业时间 11:00–20:00，是第四晚唯一硬截止。</span> 新店位于大阪市中央区西心斋桥 1-3-3 OM Hotel Nikko Building B1F，与心斋桥站南检票口地下通道直连。<br><a href="https://www.hmv.co.jp/en/store/RSB/" target="_blank">HMV record shop 心斋桥官方信息</a>',
+        xhsKeyword: '大阪 HMV record shop 心斋桥 黑胶', gmap: 'HMV+record+shop+Shinsaibashi'
+      },
+      {
+        name: '美国村＋心斋桥短逛', lat: 34.673650, lng: 135.498650,
+        type: 'spot', time: '19:10', desc: '从 HMV 出来后短逛美国村、御堂筋与心斋桥商店街；19:45 开始往千日前移动。',
+        detail: '需要购物的店尽量放在这一段，因为多数商业设施 20:00–21:00 陆续关门。晚餐后只安排道顿堀和商店街夜景，不再追店。',
+        xhsKeyword: '大阪 心斋桥 美国村 逛街', gmap: 'America-mura+Shinsaibashi+Osaka'
+      },
+      {
+        name: '心斋桥 → 千日前', lat: 34.668880, lng: 135.504720,
+        type: 'transport', time: '19:45', desc: '沿心斋桥筋向南步行，穿过道顿堀前往千日前；约 15–20 分钟。',
+        detail: '餐厅靠近日本桥站和难波站。若白天步行量已经很大，可从心斋桥搭御堂筋线一站到难波后再步行。',
+        gmap: 'Tempura+Tarojiro+Osaka'
+      },
+      {
+        name: 'Tempura Tarojiro（天ぷら たろじろう）', lat: 34.668880, lng: 135.504720,
+        type: 'food', time: '20:10', desc: '第四晚正式晚餐；以现点现炸的海鲜与蔬菜天妇罗为主，用餐预留约 75 分钟。',
+        budget: '约 ¥3,000–6,000/人',
+        detail: '地址：大阪市中央区千日前 1-8-20 高桥大楼 1F。周一营业 17:00–24:00（L.O. 23:30），可预约；若预约，建议设在 20:00–20:15，避免 HMV 或逛街稍有延误就迟到。<br><a href="https://tarojirou.com/about-us/" target="_blank">Tempura Tarojiro 官方店铺信息</a>',
+        xhsKeyword: '大阪 天妇罗 たろじろう Tarojiro', dianpingKeyword: '天ぷら たろじろう 大阪', gmap: 'Tempura+Tarojiro+Osaka'
+      },
+      {
+        name: '道顿堀 → 心斋桥夜逛 → 酒店', lat: 34.670850, lng: 135.501280,
+        type: 'spot', time: '21:25', desc: '饭后从道顿堀沿心斋桥筋向北散步，看夜景和街区氛围；约 22:10 返回酒店。',
+        detail: '这一段以散步为主，多数普通店铺已经关门。体力不足时，从难波直接搭御堂筋线到梅田／淀屋桥方向返回，不必再走回心斋桥。',
+        xhsKeyword: '大阪 道顿堀 心斋桥 夜景', gmap: 'Dotonbori+Osaka'
       }
     ]
   },
@@ -723,7 +754,7 @@ function overviewContent() {
 </div>
 <div class="section-head">先说结论</div>
 <div class="pay-summary"><h4>酒店位置合适，不换酒店</h4>Zentis Osaka 位于堂岛浜，去大阪站、北新地和中之岛都方便；三个跨城日无需拖行李换住处。</div>
-<div class="pay-summary"><h4>9/27 京都，9/28 奈良＋宇治</h4>京都日按永观堂 → 三千院 → 贵船的方向推进，傍晚回到鸭川与河原町；奈良＋宇治继续放在周一，保持山麓看鹿和河岸散步的轻量节奏。</div>
+<div class="pay-summary"><h4>9/27 京都，9/28 奈良＋宇治</h4>京都日按永观堂 → 三千院 → 贵船的方向推进，傍晚回到鸭川与河原町；奈良＋宇治放在周一，白天看鹿与河岸，晚上回大阪逛心斋桥。</div>
 <div class="pay-summary"><h4>京都日提早出发、由南向北</h4>永观堂开门进入，之后经国际会馆去三千院，再从大原转往贵船；日落放在鸭川三角洲，随后逛 SOU・SOU，并以祇园鳗鱼饭收尾。</div>
 <div class="section-head">行程概览</div>
 <div class="day-list">${DAYS.slice(1).map(d=>`<div class="card" onclick="go(${d.id})"><div class="name"><span class="dot" style="background:${d.color}"></span>${d.label} · ${d.title}</div><div class="desc">${d.date}</div></div>`).join('')}</div>
@@ -733,6 +764,7 @@ function overviewContent() {
 <div class="pay-summary"><h4>第二晚购物硬截止 · 19:20</h4>agete 与 Aesop 均在阪急梅田本店、官方营业至 20:00；从大阪站直接前往，不先回酒店。若 19:35 后才到，只保留更重要的一家。</div>
 <div class="pay-summary"><h4>神户阵雨 Plan B</h4>上午阵雨、下午转阴时，改走 FREUNDLIEB → VAGUE KOBE → Anthem → THE BOOK END → 舞子公园；14:00 再确认雨势与海边风力，持续降雨时不去舞子。</div>
 <div class="pay-summary"><h4>京都日三个硬节点</h4>永观堂 09:00 开门；贵船先锁定 16:25 左右的返程公交；Gion Unagi Kawato 建议预约 19:30。9/27 是贵船 33 系统增班最后一天。</div>
+<div class="pay-summary"><h4>第四晚先 HMV、后天妇罗</h4>HMV record shop 心斋桥 20:00 关门，必须从宇治直接前往；18:20–19:10 逛唱片，短逛美国村后约 20:10 吃 Tempura Tarojiro，饭后再走道顿堀与心斋桥夜景。</div>
 <div class="pay-summary"><h4>童书之森 · 可不预约</h4>本次以建筑和户外青苹果为主；只有确定想入馆时，才在临近日期查看预约。</div>
 <div class="pay-summary"><h4>返程日上午 · WAD 12:00 开门冲</h4>中之岛压缩为建筑重点，中崎町安排 10:20–11:20；11:50 到 WAD 门口等第一批，12:45 必须离店。机场目标抵达时间调整为约 14:45。</div>
 <div class="section-head">重要提醒</div>
