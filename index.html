@@ -243,7 +243,7 @@ const DAYS = [
   { id: 0, label: '总览', color: '#176b87', locations: [] },
   {
     id: 1, label: '9/25 抵达', date: '周五 · 16:00 抵达关西机场 T1',
-    title: '落地梅田，第一晚集中购物', color: '#e28b42',
+    title: '落地梅田，第一晚鬼塚虎优先', color: '#e28b42',
     locations: [
       {
         name: '关西国际机场 T1', lat: 34.434160, lng: 135.244000,
@@ -261,33 +261,26 @@ const DAYS = [
       {
         name: 'Zentis Osaka（大阪曾提斯酒店）', lat: 34.695860, lng: 135.496060,
         type: 'hotel', time: '19:00', desc: '快速办理入住、放行李；目标 19:10 前重新出门。',
-        detail: '首晚有商场关门时间限制，不在酒店久留。若 19:20 仍未离开酒店，就跳过 20:00 关门的 agete 与 Aesop，直接去 NU 茶屋町。官方信息：Herbis Osaka 机场巴士站步行约 10 分钟。<br><a href="https://zentishotels.com/en/osaka/access/" target="_blank">酒店官方交通</a>',
+        detail: '放下行李后直接去 NU 茶屋町；agete 与 Aesop 已移到第二晚，不再挤占首晚试鞋时间。官方信息：Herbis Osaka 机场巴士站步行约 10 分钟。<br><a href="https://zentishotels.com/en/osaka/access/" target="_blank">酒店官方交通</a>',
         gmap: 'Zentis+Osaka'
       },
       {
-        name: '阪急梅田：agete＋Aesop', lat: 34.702943, lng: 135.498758,
-        type: 'spot', time: '19:25', desc: '同一栋楼集中购买：agete 在 1F，最近的 Aesop 在 3F；最晚 19:55 离开。',
-        detail: '<span class="warn">两店通常 20:00 关门，是首晚唯一硬截止。</span> 先直奔已有目标商品，不安排慢逛；若抵达时已接近 19:45，只选更重要的一家。<br><a href="https://www.hankyu-dept.co.jp/honten/" target="_blank">阪急梅田本店</a> · <a href="https://www.aesop.co.jp/store?sid=0SS123" target="_blank">Aesop 阪急梅田店</a> · <a href="https://agete.com/" target="_blank">agete 官方网站</a>',
-        xhsKeyword: '阪急梅田 agete Aesop 购物', dianpingKeyword: '阪急梅田本店 购物',
-        gmap: 'Hankyu+Umeda+Main+Store'
-      },
-      {
         name: 'Onitsuka Tiger NU Chayamachi Store', lat: 34.706832, lng: 135.498903,
-        type: 'spot', time: '20:05', desc: '从阪急梅田步行约 8 分钟，预留约 40 分钟试鞋和结账。',
-        detail: '店铺位于 NU茶屋町 1F，通常营业至 21:00；以当天商场公告为准。若航班或入境延误，首晚优先保留这一站。<br><a href="https://www.onitsukatiger.com/jp/ja-jp" target="_blank">Onitsuka Tiger 官方网站</a>',
+        type: 'spot', time: '19:25', desc: '首晚购物第一优先；从酒店直接前往，预留约 50 分钟试鞋、选款和结账。',
+        detail: '店铺位于 NU茶屋町 1F，官方营业时间为 11:00–21:00。若航班或入境延误，只要能在 20:20 左右抵达，仍优先保留这一站。<br><a href="https://nu-chayamachi.com/shop/onitsukatiger/" target="_blank">NU茶屋町店铺信息</a>',
         xhsKeyword: 'Onitsuka Tiger NU茶屋町 鬼塚虎', dianpingKeyword: 'Onitsuka Tiger NU Chayamachi',
         gmap: 'Onitsuka+Tiger+NU+Chayamachi+Store'
       },
       {
         name: '梅田本店堂吉诃德：山崎12年＋七星烟', lat: 34.703060, lng: 135.500950,
-        type: 'spot', time: '20:55', desc: '营业 24 小时；先问酒类柜台山崎12年，再在烟草柜台购买七星烟。',
+        type: 'spot', time: '20:20', desc: '鬼塚虎结账后步行前往；先问酒类柜台山崎12年，再在烟草柜台购买七星烟。',
         detail: '该店官方标注同时销售酒类与烟草，适合合并处理两项采购。<span class="warn">山崎12年属于稀缺库存，当晚是否有货、售价及限购均需现场确认，不能视为必买。</span> 七星烟的具体版本也以柜台库存为准；酒类与烟草购买可能要求出示护照确认年龄。若只买七星烟，也可改去 NU 茶屋町附近的 24 小时 Lawson。<br><a href="https://www.donki.com/store/shop_detail.php?shop_id=275" target="_blank">堂吉诃德梅田本店官方信息</a>',
         xhsKeyword: '梅田 堂吉诃德 山崎12年 七星烟', dianpingKeyword: '堂吉诃德 梅田本店',
         gmap: 'Don+Quijote+Umeda+Main+Store'
       },
       {
         name: '梅田／东梅田晚餐', lat: 34.701350, lng: 135.501050,
-        type: 'food', time: '21:25', desc: '购物结束后就近吃晚餐，再步行返回酒店；不再绕去难波。',
+        type: 'food', time: '20:50', desc: '购物结束后就近吃晚餐，再步行返回酒店；不再绕去难波。',
         detail: '堂吉诃德周边营业较晚，按体力选择拉面、烧肉或居酒屋。若太累，直接回堂岛／北新地或酒店用餐。',
         budget: '¥2,000–5,000/人', xhsKeyword: '大阪 梅田 深夜 晚餐',
         dianpingKeyword: '大阪 梅田 深夜 晚餐', gmap: 'Higashiumeda+Osaka+restaurants'
@@ -376,10 +369,23 @@ const DAYS = [
         xhsKeyword: '神户 舞子公园 明石海峡大桥 日落', gmap: 'Maiko+Park+Kobe'
       },
       {
-        name: '舞子／三宫晚餐后返阪', lat: 34.633230, lng: 135.033490,
-        type: 'food', time: '18:20', desc: '按体力决定在舞子简单吃，或返回三宫吃正式晚餐；之后回大阪。',
+        name: 'JR 舞子站 → JR 大阪站', lat: 34.633230, lng: 135.033490,
+        type: 'transport', time: '18:20', desc: '不在神户吃晚餐，直接返回大阪；目标 19:15 左右抵达梅田。',
+        detail: '先搭 JR 到三之宫／神户一带，再按实时班次换乘新快速；若错过合适班次导致预计 19:30 后才到大阪，第二晚购物只保留更重要的一家。',
+        gmap: 'JR+Maiko+Station'
+      },
+      {
+        name: '阪急梅田：agete＋Aesop', lat: 34.702943, lng: 135.498758,
+        type: 'spot', time: '19:20', desc: '同一栋楼集中购买：agete 在 1F、Aesop 在 3F；19:55 前结账离开。',
+        detail: '<span class="warn">两店官方营业至 20:00，是第二晚的硬截止。</span> 从大阪站直接去阪急梅田，不先回酒店；若抵达时已超过 19:35，只逛更重要的一家。<br><a href="https://agete.com/shop/detail/?real_shop_id=43" target="_blank">agete 梅田阪急</a> · <a href="https://www.aesop.com/stores/jp/osaka/0SS123.html" target="_blank">Aesop 阪急梅田 3F</a>',
+        xhsKeyword: '阪急梅田 agete Aesop 购物', dianpingKeyword: '阪急梅田本店 购物',
+        gmap: 'Hankyu+Umeda+Main+Store'
+      },
+      {
+        name: '梅田晚餐', lat: 34.702050, lng: 135.498100,
+        type: 'food', time: '20:05', desc: '购物结束后在梅田吃晚餐，再步行或乘一站返回酒店。',
         budget: '¥1,500–5,000/人',
-        xhsKeyword: '神户 舞子 三宫 晚餐', dianpingKeyword: '神户 三宫 晚餐', gmap: 'JR+Maiko+Station'
+        xhsKeyword: '大阪 梅田 晚餐', dianpingKeyword: '大阪 梅田 晚餐', gmap: 'Umeda+Osaka+restaurants'
       }
     ],
     rainNote: '上午有阵雨、下午转为多云时启用：取消美利坚公园晨间户外拍摄、兵库县立美术馆外观与须磨海岸散步，上午集中在三宫—海岸通，下午雨停后搭 JR 去舞子公园。若 14:00 后仍持续降雨或海边风势较强，则不去舞子，留在元町／三宫室内活动。',
@@ -435,10 +441,23 @@ const DAYS = [
         xhsKeyword: '神户 舞子公园 明石海峡大桥 阴天 拍照', gmap: 'Maiko+Park+Kobe'
       },
       {
-        name: 'JR 舞子站 → 三宫／大阪', lat: 34.633230, lng: 135.033490,
-        type: 'transport', time: '18:10', desc: '按体力在三宫吃晚餐，或直接搭 JR 返回大阪。',
-        detail: '若傍晚重新下雨，可提前离开；不要为了等日落在无遮蔽的海边久留。',
+        name: 'JR 舞子站 → JR 大阪站', lat: 34.633230, lng: 135.033490,
+        type: 'transport', time: '18:10', desc: '直接搭 JR 返回大阪；目标 19:10 左右抵达梅田，不在神户停留吃晚餐。',
+        detail: '若傍晚重新下雨可提前离开。若预计 19:30 后才到大阪，第二晚购物只保留更重要的一家。',
         gmap: 'JR+Maiko+Station'
+      },
+      {
+        name: '阪急梅田：agete＋Aesop（Plan B）', lat: 34.702943, lng: 135.498758,
+        type: 'spot', time: '19:15', desc: '从大阪站直接去阪急梅田；agete 在 1F、Aesop 在 3F，19:55 前完成结账。',
+        detail: '<span class="warn">两店官方营业至 20:00。</span> 若下午持续下雨而取消舞子，就从元町／三宫提早返阪，购物时间会更宽松。<br><a href="https://agete.com/shop/detail/?real_shop_id=43" target="_blank">agete 梅田阪急</a> · <a href="https://www.aesop.com/stores/jp/osaka/0SS123.html" target="_blank">Aesop 阪急梅田 3F</a>',
+        xhsKeyword: '阪急梅田 agete Aesop 购物', dianpingKeyword: '阪急梅田本店 购物',
+        gmap: 'Hankyu+Umeda+Main+Store'
+      },
+      {
+        name: '梅田晚餐（Plan B）', lat: 34.702050, lng: 135.498100,
+        type: 'food', time: '20:05', desc: '购物结束后在梅田吃晚餐，再返回酒店。',
+        budget: '¥1,500–5,000/人',
+        xhsKeyword: '大阪 梅田 晚餐', dianpingKeyword: '大阪 梅田 晚餐', gmap: 'Umeda+Osaka+restaurants'
       }
     ]
   },
@@ -721,8 +740,9 @@ function overviewContent() {
 <div class="section-head">行程概览</div>
 <div class="day-list">${DAYS.slice(1).map(d=>`<div class="card" onclick="go(${d.id})"><div class="name"><span class="dot" style="background:${d.color}"></span>${d.label} · ${d.title}</div><div class="desc">${d.date}</div></div>`).join('')}</div>
 <div class="section-head">建议提前处理</div>
-<div class="pay-summary"><h4>首晚购物硬截止 · 19:20</h4>agete 与 Aesop 集中在阪急梅田本店，通常 20:00 关门；若 19:20 仍未离开酒店，就跳过两店，直接去通常 21:00 关门的 Onitsuka Tiger。堂吉诃德 24 小时营业，可最后处理七星烟并询问山崎12年库存。</div>
-<div class="pay-summary"><h4>神户日唯一硬截止 · 14:35</h4>Cafe & Bar Anthem 最晚 14:35 结账离开，才能为须磨留出约 70 分钟，并在 16:45 左右抵达舞子等待日落。</div>
+<div class="pay-summary"><h4>首晚优先鬼塚虎</h4>办理入住后直接去 NU茶屋町，给 Onitsuka Tiger 留足试鞋时间；agete 与 Aesop 移到第二晚。堂吉诃德 24 小时营业，放在鬼塚虎之后处理七星烟并询问山崎12年库存。</div>
+<div class="pay-summary"><h4>神户日两个硬节点</h4>Cafe & Bar Anthem 最晚 14:35 结账；舞子蓝调拍到约 18:10，18:20 左右搭 JR 返阪，才能在 19:20 左右抵达阪急梅田。</div>
+<div class="pay-summary"><h4>第二晚购物硬截止 · 19:20</h4>agete 与 Aesop 均在阪急梅田本店、官方营业至 20:00；从大阪站直接前往，不先回酒店。若 19:35 后才到，只保留更重要的一家。</div>
 <div class="pay-summary"><h4>神户阵雨 Plan B</h4>上午阵雨、下午转阴时，改走 FREUNDLIEB → VAGUE KOBE → Anthem → THE BOOK END → 舞子公园；14:00 再确认雨势与海边风力，持续降雨时不去舞子。</div>
 <div class="pay-summary"><h4>京都日两个硬节点</h4>禅林寺 16:00 停止受付，因此固定中午参观；贵船则先锁定 16:25 左右的返程公交，再决定河岸能走多远。9/27 是 33 系统增班最后一天。</div>
 <div class="pay-summary"><h4>童书之森 · 可不预约</h4>本次以建筑和户外青苹果为主；只有确定想入馆时，才在临近日期查看预约。</div>
