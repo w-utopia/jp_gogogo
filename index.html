@@ -382,7 +382,7 @@ const DAYS = [
         xhsKeyword: '神户 舞子 三宫 晚餐', dianpingKeyword: '神户 三宫 晚餐', gmap: 'JR+Maiko+Station'
       }
     ],
-    rainNote: '持续阴雨或强风时启用：取消美利坚公园户外拍摄、兵库县立美术馆外观、须磨海岸散步与舞子日落。上午集中在三宫—海岸通，下午搭 JR 去神户须磨海洋世界；馆内不同区域之间仍有少量室外连接，建议穿防滑鞋并带伞。',
+    rainNote: '上午有阵雨、下午转为多云时启用：取消美利坚公园晨间户外拍摄、兵库县立美术馆外观与须磨海岸散步，上午集中在三宫—海岸通，下午雨停后搭 JR 去舞子公园。若 14:00 后仍持续降雨或海边风势较强，则不去舞子，留在元町／三宫室内活动。',
     rainPlan: [
       {
         name: 'JR 大阪站 → JR 三之宫站', lat: 34.694730, lng: 135.194970,
@@ -423,23 +423,22 @@ const DAYS = [
         xhsKeyword: 'THE BOOK END 神户 摄影书店 海岸ビルヂング', gmap: 'THE+BOOK+END+Kobe'
       },
       {
-        name: 'JR 元町站 → JR 须磨海滨公园站', lat: 34.647690, lng: 135.126870,
-        type: 'transport', time: '14:40', desc: '从 THE BOOK END 步行回元町站，搭 JR 普通列车前往须磨海滨公园站，出站后步行约 5 分钟。',
-        detail: '目标约 15:10 抵达入口。不要搭到 JR 须磨站；须磨海滨公园站距离海洋世界更近。',
-        gmap: 'Suma+Kaihin+Koen+Station'
+        name: 'JR 元町站 → JR 舞子站', lat: 34.633230, lng: 135.033490,
+        type: 'transport', time: '14:40', desc: '从 THE BOOK END 步行回元町站，搭 JR 神户线普通或快速列车前往舞子站；出站后直接进入舞子公园。',
+        detail: '车程约 15–20 分钟，目标 15:10 左右抵达。14:00 再确认降雨与风势；若仍持续下雨或海边风大，就留在元町／三宫，不勉强前往。',
+        gmap: 'JR+Maiko+Station'
       },
       {
-        name: '神户须磨海洋世界', lat: 34.643640, lng: 135.129850,
-        type: 'spot', time: '15:15', desc: '只看水族展示与馆内空间，不安排虎鲸、海豚等动物表演；参观至约 17:30。',
-        budget: '1DAY 成人 ¥3,100/人',
-        detail: '地址：神户市须磨区若宫町 1-3-5。9/26 周六开放 10:00–18:00，最晚 17:00 入馆；建议提前购买日期票。重点放在 AQUA LIVE 等常设水族展示，直接跳过表演时间表与看台。馆区之间有少量室外连接，雨大时注意防滑。<br><a href="https://www.kobesuma-seaworld.jp/guide/time/" target="_blank">官方营业时间</a> · <a href="https://tix.kobesuma-seaworld.jp/" target="_blank">官方购票</a>',
-        xhsKeyword: '神户须磨海洋世界 水族馆 雨天', dianpingKeyword: '神户须磨海洋世界', gmap: 'Kobe+Suma+Sea+World'
+        name: '舞子公园（Plan B）', lat: 34.630650, lng: 135.034360,
+        type: 'spot', time: '15:10', desc: '雨停后散步拍明石海峡大桥、桥下结构与海岸；时间充裕，可一直留到约 17:51 日落。',
+        detail: '下午以多云为主时，云层和桥体适合拍偏冷调照片。地面湿滑时不贴近海边石阶；若再次下雨，可缩短户外段并回舞子站。约 18:10 离开，保留蓝调时段。<br><a href="https://hyogo-maikopark.jp/" target="_blank">舞子公园官方信息</a>',
+        xhsKeyword: '神户 舞子公园 明石海峡大桥 阴天 拍照', gmap: 'Maiko+Park+Kobe'
       },
       {
-        name: '须磨海滨公园 → 三宫／大阪', lat: 34.647690, lng: 135.126870,
-        type: 'transport', time: '17:35', desc: '步行回 JR 须磨海滨公园站；按体力在三宫吃晚餐，或直接返回大阪。',
-        detail: '闭馆前离开可避开集中散场。若雨势很大，不再追加须磨海岸或 Harborland 户外段。',
-        gmap: 'Suma+Kaihin+Koen+Station'
+        name: 'JR 舞子站 → 三宫／大阪', lat: 34.633230, lng: 135.033490,
+        type: 'transport', time: '18:10', desc: '按体力在三宫吃晚餐，或直接搭 JR 返回大阪。',
+        detail: '若傍晚重新下雨，可提前离开；不要为了等日落在无遮蔽的海边久留。',
+        gmap: 'JR+Maiko+Station'
       }
     ]
   },
@@ -724,7 +723,7 @@ function overviewContent() {
 <div class="section-head">建议提前处理</div>
 <div class="pay-summary"><h4>首晚购物硬截止 · 19:20</h4>agete 与 Aesop 集中在阪急梅田本店，通常 20:00 关门；若 19:20 仍未离开酒店，就跳过两店，直接去通常 21:00 关门的 Onitsuka Tiger。堂吉诃德 24 小时营业，可最后处理七星烟并询问山崎12年库存。</div>
 <div class="pay-summary"><h4>神户日唯一硬截止 · 14:35</h4>Cafe & Bar Anthem 最晚 14:35 结账离开，才能为须磨留出约 70 分钟，并在 16:45 左右抵达舞子等待日落。</div>
-<div class="pay-summary"><h4>神户雨天 Plan B</h4>持续阴雨或强风时，取消须磨海岸散步与舞子日落，改走 FREUNDLIEB → VAGUE KOBE → Anthem → THE BOOK END → 神户须磨海洋世界；海洋世界只看水族展示，不安排动物表演。</div>
+<div class="pay-summary"><h4>神户阵雨 Plan B</h4>上午阵雨、下午转阴时，改走 FREUNDLIEB → VAGUE KOBE → Anthem → THE BOOK END → 舞子公园；14:00 再确认雨势与海边风力，持续降雨时不去舞子。</div>
 <div class="pay-summary"><h4>京都日两个硬节点</h4>禅林寺 16:00 停止受付，因此固定中午参观；贵船则先锁定 16:25 左右的返程公交，再决定河岸能走多远。9/27 是 33 系统增班最后一天。</div>
 <div class="pay-summary"><h4>童书之森 · 可不预约</h4>本次以建筑和户外青苹果为主；只有确定想入馆时，才在临近日期查看预约。</div>
 <div class="pay-summary"><h4>返程日上午 · WAD 12:00 开门冲</h4>中之岛压缩为建筑重点，中崎町安排 10:20–11:20；11:50 到 WAD 门口等第一批，12:45 必须离店。机场目标抵达时间调整为约 14:45。</div>
@@ -899,7 +898,7 @@ function renderDay(idx) {
   let h = `<div class="day-head"><h2>${d.title}</h2><p>${d.date}</p></div>`;
   if(main.length) { h += '<div class="section-head">行程</div><div class="timeline">'; main.forEach(l => h += locCard(l, idx)); h += '</div>'; }
   if(d.rainPlan?.length) {
-    h += `<div class="section-head">🌧️ 阴雨天 Plan B</div>${d.rainNote?`<div class="pay-summary"><h4>什么时候切换</h4>${d.rainNote}</div>`:''}<div class="timeline">`;
+    h += `<div class="section-head">🌦️ 阵雨天 Plan B</div>${d.rainNote?`<div class="pay-summary"><h4>什么时候切换</h4>${d.rainNote}</div>`:''}<div class="timeline">`;
     d.rainPlan.forEach(l => h += locCard(l, idx));
     h += '</div>';
   }
